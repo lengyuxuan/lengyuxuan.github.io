@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.fangjin.life/images/unix/posix-queue/queue-list.drawio.svg">
 <meta property="article:published_time" content="2021-11-17T06:45:00.000Z">
-<meta property="article:modified_time" content="2021-11-29T08:49:06.324Z">
+<meta property="article:modified_time" content="2021-11-30T09:56:35.174Z">
 <meta property="article:author" content="fangjin">
 <meta property="article:tag" content="Unix">
 <meta name="twitter:card" content="summary">
@@ -185,7 +185,7 @@
   <div class="">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_open"><span class="toc-number">2.</span> <span class="toc-text">mq_open</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_close"><span class="toc-number">3.</span> <span class="toc-text">mq_close</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_unlink"><span class="toc-number">4.</span> <span class="toc-text">mq_unlink</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_open"><span class="toc-number">2.</span> <span class="toc-text">mq_open</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_close"><span class="toc-number">3.</span> <span class="toc-text">mq_close</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_unlink"><span class="toc-number">4.</span> <span class="toc-text">mq_unlink</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_setattrr"><span class="toc-number">5.</span> <span class="toc-text">mq_setattrr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_getattr"><span class="toc-number">6.</span> <span class="toc-text">mq_getattr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_send"><span class="toc-number">7.</span> <span class="toc-text">mq_send</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_receive"><span class="toc-number">8.</span> <span class="toc-text">mq_receive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_notify"><span class="toc-number">9.</span> <span class="toc-text">mq_notify</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -242,10 +242,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/unix/posix-queue/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4.5k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5.9k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 27(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 37(分)</span>
 	
 
       </div>
@@ -506,10 +506,10 @@ pre[data-line] {
 <p>mq_open &#x7684;&#x8FD4;&#x56DE;&#x503C;&#x6210;&#x4E3A;&#x6D88;&#x606F;&#x961F;&#x5217;&#x63CF;&#x8FF0;&#x7B26;&#xFF0C;&#x4F46;&#x5B83;&#x4E0D;&#x5FC5;&#x662F;&#x50CF;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x6216;&#x5957;&#x63A5;&#x5B57;&#x63CF;&#x8FF0;&#x7B26;&#x90A3;&#x6837;&#x7684;&#x77ED;&#x6574;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x5C06;&#x7528;&#x4F5C;&#x5176;&#x4F59; 7 &#x4E2A;&#x6D88;&#x606F;&#x961F;&#x5217;&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x3002;</p>
 
     <div class="code-title">
-      <a name="undefined">code</a>
+      <a name="mq_create.c">mq_create.c</a>
       <span>c</span>
     </div>
-    <pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mqueue.h&gt;</span></span>
+    <pre data-role="codeBlock" data-info="c { .line-numbers file=mq_create.c }" class="language-c line-numbers"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mqueue.h&gt;</span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h&gt;</span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;errno.h&gt;</span></span>
@@ -564,12 +564,15 @@ pre[data-line] {
   <span class="token function">mq_close</span><span class="token punctuation">(</span>mqd<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword keyword-return">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><blockquote>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#x4F7F;&#x7528;&#x4E86; <code>getopt_long</code> &#x6765;&#x89E3;&#x6790;&#x547D;&#x4EE4;&#x884C;&#x4F20;&#x53C2;&#xFF0C;&#x5177;&#x4F53;&#x4ECB;&#x7ECD;&#x53EF;&#x4EE5;&#x53C2;&#x8003; <a href="../../util/c-comand">C &#x8BED;&#x8A00;&#x5904;&#x7406;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;</a></p>
+</blockquote>
+
     <div class="code-title">
       <a name="Makefile">Makefile</a>
       <span>Makefile</span>
     </div>
-    <pre data-role="codeBlock" data-info="Makefile { file=Makefile }" class="language-makefile"><span class="token comment"># $@: &#x76EE;&#x6807;&#x6587;&#x4EF6;</span>
+    <pre data-role="codeBlock" data-info="Makefile { .line-numbers file=Makefile }" class="language-makefile line-numbers"><span class="token comment"># $@: &#x76EE;&#x6807;&#x6587;&#x4EF6;</span>
 <span class="token comment"># $^: &#x6240;&#x6709;&#x7684;&#x4F9D;&#x8D56;&#x6587;&#x4EF6;</span>
 <span class="token comment"># $&lt;: &#x7B2C;&#x4E00;&#x4E2A;&#x4F9D;&#x8D56;&#x6587;&#x4EF6;&#x3002;</span>
 
@@ -581,11 +584,44 @@ objects <span class="token operator">=</span> <span class="token variable">$</sp
 <span class="token symbol">all</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">(</span>objects<span class="token punctuation">)</span>
 
 <span class="token symbol">mq_create</span><span class="token punctuation">:</span> mq_create.o
-	gcc -g -o <span class="token variable">$@</span> <span class="token variable">$^</span>
+	gcc -g -o <span class="token variable">$@</span> <span class="token variable">$^</span> -lrt
 
 <span class="token symbol">clean</span><span class="token punctuation">:</span>
 	-rm -rf *.o <span class="token variable">$</span><span class="token punctuation">(</span>objects<span class="token punctuation">)</span>
-</pre><h3 class="mume-header" id="mq_close">mq_close</h3>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><blockquote>
+<p>&#x7531;&#x4E8E; mq &#x7CFB;&#x5217;&#x51FD;&#x6570;&#x4E0D;&#x5728;&#x6807;&#x51C6;&#x5E93;&#x4E2D;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x9700;&#x989D;&#x5916;&#x6307;&#x5B9A;&#x94FE;&#x63A5;&#x5E93; <code>-lrt</code></p>
+</blockquote>
+
+    <div class="code-title">
+      <a name="&#x4F7F;&#x7528; mq_create &#x521B;&#x5EFA;&#x6D88;&#x606F;&#x961F;&#x5217;">&#x4F7F;&#x7528; mq_create &#x521B;&#x5EFA;&#x6D88;&#x606F;&#x961F;&#x5217;</a>
+      <span>text</span>
+    </div>
+    <pre data-role="codeBlock" data-info="text { file=&quot;&#x4F7F;&#x7528; mq_create &#x521B;&#x5EFA;&#x6D88;&#x606F;&#x961F;&#x5217;&quot; }" class="language-text">[root@fangjin posix]# make mq_create
+gcc -g -c mq_create.c -lrt
+gcc -g -o mq_create mq_create.o -lrt
+[root@fangjin posix]# ./mq_create -h
+Options:
+  -h, --help
+  -m, --maxmsg=mq_maxmsg Set mq_maxmsg
+  -s, --msgsize=msgsize Set mq_msgsize
+  -e, Check file exists, if exists then exit
+Usage:
+  mq_create -m 12 -s 100 -e /some.queue
+[root@fangjin posix]# ./mq_create -m 100 -s 30 /test.queue
+[root@fangjin posix]# ./mq_create -e -m 100 -s 30 /test.queue # &#x6307;&#x5B9A; -e &#x53C2;&#x6570;&#x540E;&#x521B;&#x5EFA;&#x5931;&#x8D25;
+open message queue /test.queue error [File exists]
+[root@fangjin posix]# ls /dev/mqueue/
+test.queue
+[root@fangjin posix]#
+</pre><p>Linux &#x4E0B;&#x7684; Posix &#x6D88;&#x606F;&#x961F;&#x5217;&#x662F;&#x5728; vfs &#x4E2D;&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#xFF1A;</p>
+
+    <div class="code-title">
+      <a name="undefined">code</a>
+      <span>shell</span>
+    </div>
+    <pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">mount</span> -t mqueue none /dev/mqueue
+</pre><p>&#x5C06;&#x6D88;&#x606F;&#x961F;&#x5217;&#x6302;&#x5728;&#x5728; /dev/mqueue &#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x4FBF;&#x4E8E;&#x67E5;&#x770B;&#x3002;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x91CD;&#x542F;&#x540E;&#x8BE5;&#x6302;&#x8F7D;&#x4F1A;&#x5931;&#x6548;&#xFF0C;&#x9700;&#x624B;&#x52A8;&#x518D;&#x6B21;&#x6267;&#x884C;&#x8BE5;&#x547D;&#x4EE4;&#x3002;</p>
+<h3 class="mume-header" id="mq_close">mq_close</h3>
 
 
     <div class="code-title">
@@ -605,9 +641,301 @@ objects <span class="token operator">=</span> <span class="token variable">$</sp
     <pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mqueue.h&gt;</span></span>
 <span class="token keyword keyword-int">int</span> <span class="token function">mq_unlink</span><span class="token punctuation">(</span><span class="token keyword keyword-const">const</span> <span class="token keyword keyword-char">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </pre><p>&#x6BCF;&#x4E2A;&#x6D88;&#x606F;&#x961F;&#x5217;&#x6709;&#x4E00;&#x4E2A;&#x4FDD;&#x5B58;&#x5176;&#x5F53;&#x524D;&#x6253;&#x5F00;&#x7740;&#x63CF;&#x8FF0;&#x7B26;&#x6570;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x5668;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#x961F;&#x5217;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x6254;&#x5927;&#x4E8E; 0 &#x65F6;&#xFF0C;&#x5176; name &#x5C31;&#x80FD;&#x5220;&#x9664;&#xFF0C;&#x4F46;&#x662F;&#x6539;&#x961F;&#x5217;&#x7684;&#x6790;&#x6784;&#xFF08;&#x8FD9;&#x4E0E;&#x4ECE;&#x7CFB;&#x7EDF;&#x4E2D;&#x5220;&#x9664; name &#x4E0D;&#x540C;&#xFF09;&#x8981;&#x5230;&#x6700;&#x540E;&#x4E00;&#x4E2A; mq_close &#x53D1;&#x751F;&#x65F6;&#x624D;&#x8FDB;&#x884C;&#x3002;</p>
-<blockquote>
-<p><a href="../../util/c-comand">C &#x8BED;&#x8A00;&#x5904;&#x7406;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;</a></p>
-</blockquote>
+
+    <div class="code-title">
+      <a name="mq_unlink.c">mq_unlink.c</a>
+      <span>c</span>
+    </div>
+    <pre data-role="codeBlock" data-info="c { file=mq_unlink.c }" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mqueue.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;errno.h&gt;</span></span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> argc<span class="token punctuation">,</span> <span class="token keyword keyword-char">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>argc <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;please enter message queue name to be delete.\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-return">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span><span class="token function">mq_unlink</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;message queue unlink error: %s\n&quot;</span><span class="token punctuation">,</span> <span class="token function">strerror</span><span class="token punctuation">(</span>errno<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-return">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p>&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x53EF;&#x53C2;&#x8003;&#x4E0A;&#x6587; <a href="#Makefile">Makefile</a>&#xFF0C;&#x540E;&#x7EED;&#x4EE3;&#x7801;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x7C7B;&#x4F3C;&#xFF0C;&#x540E;&#x6587;&#x4E0D;&#x518D;&#x8D58;&#x8FF0;&#xFF0C;&#x8BFB;&#x8005;&#x53EF;&#x6839;&#x636E;&#x81EA;&#x8EAB;&#x9700;&#x8981;&#x81EA;&#x884C;&#x66F4;&#x6539;&#x3002;</p>
+
+    <div class="code-title">
+      <a name="&#x4F7F;&#x7528; mq_unlink &#x5220;&#x9664;&#x6D88;&#x606F;&#x961F;&#x5217;">&#x4F7F;&#x7528; mq_unlink &#x5220;&#x9664;&#x6D88;&#x606F;&#x961F;&#x5217;</a>
+      <span>text</span>
+    </div>
+    <pre data-role="codeBlock" data-info="text { file=&quot;&#x4F7F;&#x7528; mq_unlink &#x5220;&#x9664;&#x6D88;&#x606F;&#x961F;&#x5217;&quot; }" class="language-text">[root@fangjin posix]# make mq_unlink
+gcc -g -c mq_unlink.c -lrt
+gcc -g -o mq_unlink mq_unlink.o -lrt
+[root@fangjin posix]# ./mq_unlink /test.queue
+[root@fangjin posix]# ls /dev/mqueue/
+[root@fangjin posix]#
+</pre><h3 class="mume-header" id="mq_setattrr">mq_setattrr</h3>
+
+
+    <div class="code-title">
+      <a name="undefined">code</a>
+      <span>c</span>
+    </div>
+    <pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mqueue.h&gt;</span></span>
+<span class="token keyword keyword-int">int</span> <span class="token function">mq_setattr</span><span class="token punctuation">(</span><span class="token class-name">mqd_t</span> mqdes<span class="token punctuation">,</span> <span class="token keyword keyword-const">const</span> <span class="token keyword keyword-struct">struct</span> <span class="token class-name">mq_attr</span> <span class="token operator">*</span>attr<span class="token punctuation">,</span> <span class="token keyword keyword-struct">struct</span> <span class="token class-name">mq_attr</span> <span class="token operator">*</span>oattr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p><code>mq_attr</code> &#x7684;&#x7ED3;&#x6784;&#x542B;&#x6709;&#x4EE5;&#x4E0B;&#x5C5E;&#x6027;&#xFF1A;</p>
+
+    <div class="code-title">
+      <a name="mq_attr">mq_attr</a>
+      <span>c</span>
+    </div>
+    <pre data-role="codeBlock" data-info="c { file=mq_attr }" class="language-c"><span class="token keyword keyword-struct">struct</span> <span class="token class-name">mq_attr</span> <span class="token punctuation">{</span>
+  <span class="token comment">// message quque flag: 0, O_NONBLOCK</span>
+  <span class="token keyword keyword-long">long</span> mq_flags<span class="token punctuation">;</span>
+
+  <span class="token comment">// max number of messages allowed on queue</span>
+  <span class="token keyword keyword-long">long</span> mq_maxmsg<span class="token punctuation">;</span>
+
+  <span class="token comment">// max size of a message (in bytes)</span>
+  <span class="token keyword keyword-long">long</span> mq_msgsize<span class="token punctuation">;</span>
+
+  <span class="token comment">// number of messages currenty on queue</span>
+  <span class="token keyword keyword-long">long</span> mq_curmsgs<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p>&#x6307;&#x5411;&#x67D0;&#x4E2A; <code>mq_attr</code> &#x7ED3;&#x6784;&#x7684;&#x6307;&#x9488;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A; mq_open &#x7684;&#x7B2C;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#xFF0C;&#x4ECE;&#x800C;&#x5728;&#x521B;&#x5EFA;&#x6D88;&#x606F;&#x961F;&#x5217;&#x65F6;&#x6307;&#x5B9A; mq_maxmsg &#x548C; mq_msgsize &#x5C5E;&#x6027;&#xFF0C;mq_open &#x5FFD;&#x7565;&#x8BE5;&#x7ED3;&#x6784;&#x7684;&#x53E6;&#x5916;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x3002;</p>
+<p>mq_setattr &#x53EF;&#x4EE5;&#x4E3A;&#x6307;&#x5B9A;&#x961F;&#x5217;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#xFF0C;&#x4F46;&#x662F;&#x53EA;&#x6709; mq_flags &#x751F;&#x6548;&#xFF0C;&#x5176;&#x4F59;&#x5B57;&#x6BB5;&#x5C06;&#x88AB;&#x5FFD;&#x7565;&#x3002;</p>
+<h3 class="mume-header" id="mq_getattr">mq_getattr</h3>
+
+
+    <div class="code-title">
+      <a name="undefined">code</a>
+      <span>c</span>
+    </div>
+    <pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mqueue.h&gt;</span></span>
+<span class="token keyword keyword-int">int</span> <span class="token function">mq_getattr</span><span class="token punctuation">(</span><span class="token class-name">mqd_t</span> mqdes<span class="token punctuation">,</span> <span class="token keyword keyword-struct">struct</span> <span class="token class-name">mq_attr</span> <span class="token operator">*</span>attr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+    <div class="code-title">
+      <a name="mq_getattr.c">mq_getattr.c</a>
+      <span>c</span>
+    </div>
+    <pre data-role="codeBlock" data-info="c { file=mq_getattr.c }" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mqueue.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;errno.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span>	<span class="token macro-name">FILE_MODE</span>	<span class="token expression"><span class="token punctuation">(</span>S_IRUSR <span class="token operator">|</span> S_IWUSR <span class="token operator">|</span> S_IRGRP <span class="token operator">|</span> S_IROTH<span class="token punctuation">)</span></span></span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> argc<span class="token punctuation">,</span> <span class="token keyword keyword-char">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>argc <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;please enter message queue name to be getattr.\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-return">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token class-name">mqd_t</span> mqd <span class="token operator">=</span> <span class="token function">mq_open</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> O_RDONLY<span class="token punctuation">,</span> FILE_MODE<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>mqd <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;open message queue %s fail: %s\n&quot;</span><span class="token punctuation">,</span> argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token function">strerror</span><span class="token punctuation">(</span>errno<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-return">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-struct">struct</span> <span class="token class-name">mq_attr</span> attr<span class="token punctuation">;</span>
+  <span class="token function">mq_getattr</span><span class="token punctuation">(</span>mqd<span class="token punctuation">,</span> <span class="token operator">&amp;</span>attr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;flags = %ld, max #msgs = %ld, max #bytes/msg = %ld, #currently on queue = %ld\n&quot;</span><span class="token punctuation">,</span>
+    attr<span class="token punctuation">.</span>mq_flags<span class="token punctuation">,</span> attr<span class="token punctuation">.</span>mq_maxmsg<span class="token punctuation">,</span> attr<span class="token punctuation">.</span>mq_msgsize<span class="token punctuation">,</span> attr<span class="token punctuation">.</span>mq_curmsgs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">mq_close</span><span class="token punctuation">(</span>mqd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-return">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+    <div class="code-title">
+      <a name="&#x4F7F;&#x7528; mq_getattr &#x67E5;&#x8BE2;&#x6D88;&#x606F;&#x961F;&#x5217;&#x5C5E;&#x6027;">&#x4F7F;&#x7528; mq_getattr &#x67E5;&#x8BE2;&#x6D88;&#x606F;&#x961F;&#x5217;&#x5C5E;&#x6027;</a>
+      <span>text</span>
+    </div>
+    <pre data-role="codeBlock" data-info="text { file=&quot;&#x4F7F;&#x7528; mq_getattr &#x67E5;&#x8BE2;&#x6D88;&#x606F;&#x961F;&#x5217;&#x5C5E;&#x6027;&quot; }" class="language-text">[root@fangjin posix]# make mq_getattr
+gcc -g -c mq_getattr.c -lrt
+gcc -g -o mq_getattr mq_getattr.o -lrt
+[root@fangjin posix]# ./mq_create -m 100 -s 30 /test.queue
+[root@fangjin posix]# ./mq_getattr /test.queue
+flags = 0, max #msgs = 100, max #bytes/msg = 30, #currently on queue = 0
+[root@fangjin posix]# 
+</pre><h3 class="mume-header" id="mq_send">mq_send</h3>
+
+
+    <div class="code-title">
+      <a name="undefined">code</a>
+      <span>c</span>
+    </div>
+    <pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mqueue.h&gt;</span></span>
+
+<span class="token comment">// &#x6210;&#x529F;&#x8FD4;&#x56DE; 0&#xFF0C;&#x5931;&#x8D25;&#x8FD4;&#x56DE; -1</span>
+<span class="token keyword keyword-int">int</span> <span class="token function">mq_send</span><span class="token punctuation">(</span><span class="token class-name">mqd_t</span> mqdes<span class="token punctuation">,</span> <span class="token keyword keyword-const">const</span> <span class="token keyword keyword-char">char</span> <span class="token operator">*</span>ptr<span class="token punctuation">,</span> <span class="token class-name">size_t</span> len<span class="token punctuation">,</span> <span class="token keyword keyword-unsigned">unsigned</span> <span class="token keyword keyword-int">int</span> prio<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p>mq_send &#x7528;&#x4E8E;&#x5F80;&#x4E00;&#x4E2A;&#x961F;&#x5217;&#x4E2D;&#x653E;&#x7F6E;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#xFF0C;<code>prio</code> &#x53C2;&#x6570;&#x662F;&#x5F85;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x5176;&#x503C;&#x5FC5;&#x987B;&#x5C0F;&#x4E8E; <code>MQ_PRIO_MAX</code>&#xFF0C;&#x5982;&#x679C;&#x8BE5;&#x503C;&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x7A7A;&#x6307;&#x9488;&#xFF0C;&#x6240;&#x8FD4;&#x56DE;&#x6D88;&#x606F;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x5C31;&#x901A;&#x8FC7;&#x8BE5;&#x6307;&#x9488;&#x5B58;&#x653E;&#x3002;&#x5982;&#x679C;&#x5E94;&#x7528;&#x4E0D;&#x5FC5;&#x4F7F;&#x7528;&#x4F18;&#x5148;&#x7EA7;&#x4E0D;&#x540C;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x90A3;&#x5C31;&#x7ED9; mq_send &#x6307;&#x5B9A;&#x503C;&#x4E3A; 0 &#x7684;&#x4F18;&#x5148;&#x7EA7;&#x3002;</p>
+
+    <div class="code-title">
+      <a name="mq_send.c">mq_send.c</a>
+      <span>c</span>
+    </div>
+    <pre data-role="codeBlock" data-info="c { .line-numbers file=mq_send.c }" class="language-c line-numbers"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;getopt.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;errno.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mqueue.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> argc<span class="token punctuation">,</span> <span class="token keyword keyword-char">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-int">int</span> c<span class="token punctuation">;</span>
+  <span class="token keyword keyword-struct">struct</span> <span class="token class-name">option</span> opts<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span> <span class="token string">&quot;name&quot;</span><span class="token punctuation">,</span> required_argument<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token string">&apos;n&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> <span class="token string">&quot;prio&quot;</span><span class="token punctuation">,</span> required_argument<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token string">&apos;p&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-int">int</span> opt_index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-int">int</span> prio <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-char">char</span><span class="token operator">*</span> name <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>c <span class="token operator">=</span> <span class="token function">getopt_long</span><span class="token punctuation">(</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">,</span> <span class="token string">&quot;hn:p:c:&quot;</span><span class="token punctuation">,</span> opts<span class="token punctuation">,</span> <span class="token operator">&amp;</span>opt_index<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-switch">switch</span> <span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-case">case</span> <span class="token string">&apos;h&apos;</span><span class="token operator">:</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span>
+        <span class="token string">&quot;Options:\n&quot;</span>
+        <span class="token string">&quot;  -h, --help\n&quot;</span>
+        <span class="token string">&quot;  -n, --name=name  Message queue name\n&quot;</span>
+        <span class="token string">&quot;  -p, --prio=number  Set message priority\n&quot;</span>
+        <span class="token string">&quot;Usage:\n&quot;</span>
+        <span class="token string">&quot;  mq_send -n /some.queue -p 4 -c hello!\n&quot;</span>
+      <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-case">case</span> <span class="token string">&apos;p&apos;</span><span class="token operator">:</span>
+      prio <span class="token operator">=</span> <span class="token function">atoi</span><span class="token punctuation">(</span>optarg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword keyword-break">break</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-case">case</span> <span class="token string">&apos;n&apos;</span><span class="token operator">:</span>
+      name <span class="token operator">=</span> optarg<span class="token punctuation">;</span>
+      <span class="token keyword keyword-break">break</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-default">default</span><span class="token operator">:</span>
+      <span class="token keyword keyword-break">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>name <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;please enter message queue name\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-return">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>optind <span class="token operator">==</span> argc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;please enter content\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-return">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token class-name">mqd_t</span> mqd <span class="token operator">=</span> <span class="token function">mq_open</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> O_WRONLY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-struct">struct</span> <span class="token class-name">mq_attr</span> attr<span class="token punctuation">;</span>
+  <span class="token function">mq_getattr</span><span class="token punctuation">(</span>mqd<span class="token punctuation">,</span> <span class="token operator">&amp;</span>attr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-for">for</span> <span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> i <span class="token operator">=</span> optind<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> argc<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">size_t</span> len <span class="token operator">=</span> <span class="token function">strlen</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>len <span class="token operator">&gt;</span> attr<span class="token punctuation">.</span>mq_msgsize<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;msgsize max %ld, but now %ld\n&quot;</span><span class="token punctuation">,</span> attr<span class="token punctuation">.</span>mq_msgsize<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword keyword-return">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span><span class="token function">mq_send</span><span class="token punctuation">(</span>mqd<span class="token punctuation">,</span> argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> len<span class="token punctuation">,</span> prio<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;send content faild, %s\n&quot;</span><span class="token punctuation">,</span> <span class="token function">strerror</span><span class="token punctuation">(</span>errno<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword keyword-return">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-return">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre>
+    <div class="code-title">
+      <a name="&#x4F7F;&#x7528; mq_send &#x5411;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4E2D;&#x6DFB;&#x52A0;&#x6D88;&#x606F;">&#x4F7F;&#x7528; mq_send &#x5411;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4E2D;&#x6DFB;&#x52A0;&#x6D88;&#x606F;</a>
+      <span>text</span>
+    </div>
+    <pre data-role="codeBlock" data-info="text { file=&quot;&#x4F7F;&#x7528; mq_send &#x5411;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4E2D;&#x6DFB;&#x52A0;&#x6D88;&#x606F;&quot; }" class="language-text">[root@fangjin posix]# ./mq_send -h
+Options:
+  -h, --help
+  -n, --name=name  Message queue name
+  -p, --prio=number  Set message priority
+Usage:
+  mq_send -n /some.queue -p 4 -c hello!
+[root@fangjin posix]# ./mq_send -n /test.queue hello!
+[root@fangjin posix]#
+</pre><h3 class="mume-header" id="mq_receive">mq_receive</h3>
+
+
+    <div class="code-title">
+      <a name="undefined">code</a>
+      <span>c</span>
+    </div>
+    <pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mqueue.h&gt;</span></span>
+
+<span class="token comment">// &#x6210;&#x529F;&#x8FD4;&#x56DE;&#x6D88;&#x606F;&#x4E2D;&#x7684;&#x5B57;&#x8282;&#x6570;&#xFF0C;&#x5931;&#x8D25;&#x8FD4;&#x56DE; -1</span>
+<span class="token keyword keyword-int">int</span> <span class="token function">mq_send</span><span class="token punctuation">(</span><span class="token class-name">mqd_t</span> mqdes<span class="token punctuation">,</span> <span class="token keyword keyword-char">char</span> <span class="token operator">*</span>ptr<span class="token punctuation">,</span> <span class="token class-name">size_t</span> len<span class="token punctuation">,</span> <span class="token keyword keyword-unsigned">unsigned</span> <span class="token keyword keyword-int">int</span> <span class="token operator">*</span> prio<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+    <div class="code-title">
+      <a name="mq_receive.c">mq_receive.c</a>
+      <span>c</span>
+    </div>
+    <pre data-role="codeBlock" data-info="c { .line-numbers file=mq_receive.c }" class="language-c line-numbers"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;getopt.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mqueue.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;errno.h&gt;</span></span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> argc<span class="token punctuation">,</span> <span class="token keyword keyword-char">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-int">int</span> c<span class="token punctuation">;</span>
+  <span class="token keyword keyword-int">int</span> opt_index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-struct">struct</span> <span class="token class-name">option</span> opts<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span> <span class="token string">&quot;name&quot;</span><span class="token punctuation">,</span> required_argument<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token string">&apos;n&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> <span class="token string">&quot;max&quot;</span><span class="token punctuation">,</span> required_argument<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token string">&apos;m&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-int">int</span> prio <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-char">char</span><span class="token operator">*</span> name <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-int">int</span> flag <span class="token operator">=</span> O_RDONLY<span class="token punctuation">;</span>
+  <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>c <span class="token operator">=</span> <span class="token function">getopt_long</span><span class="token punctuation">(</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">,</span> <span class="token string">&quot;hn:p:m:b&quot;</span><span class="token punctuation">,</span> opts<span class="token punctuation">,</span> <span class="token operator">&amp;</span>opt_index<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-switch">switch</span> <span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-case">case</span> <span class="token string">&apos;h&apos;</span><span class="token operator">:</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Options:\n&quot;</span>
+        <span class="token string">&quot;  -h, --help\n&quot;</span>
+        <span class="token string">&quot;  -n, --name=name  Message queue name\n&quot;</span>
+        <span class="token string">&quot;  -p, --prio=number  Set message priority\n&quot;</span>
+        <span class="token string">&quot;Usage:\n&quot;</span>
+        <span class="token string">&quot;  mq_receive -n /some.queue -p 4\n&quot;</span>
+      <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-case">case</span> <span class="token string">&apos;n&apos;</span><span class="token operator">:</span>
+      name <span class="token operator">=</span> optarg<span class="token punctuation">;</span>
+      <span class="token keyword keyword-break">break</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-case">case</span> <span class="token string">&apos;p&apos;</span><span class="token operator">:</span>
+      prio <span class="token operator">=</span> <span class="token function">atoi</span><span class="token punctuation">(</span>optarg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword keyword-break">break</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-case">case</span> <span class="token string">&apos;b&apos;</span><span class="token operator">:</span>
+      flag <span class="token operator">|=</span> O_NONBLOCK<span class="token punctuation">;</span>
+      <span class="token keyword keyword-break">break</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-default">default</span><span class="token operator">:</span>
+      <span class="token keyword keyword-break">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>name <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;please enter message queue name\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-return">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token class-name">mqd_t</span> mqd <span class="token operator">=</span> <span class="token function">mq_open</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> flag<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-struct">struct</span> <span class="token class-name">mq_attr</span> attr<span class="token punctuation">;</span>
+  <span class="token function">mq_getattr</span><span class="token punctuation">(</span>mqd<span class="token punctuation">,</span> <span class="token operator">&amp;</span>attr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-char">char</span><span class="token operator">*</span> content <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span>attr<span class="token punctuation">.</span>mq_msgsize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-int">int</span> len <span class="token operator">=</span> <span class="token function">mq_receive</span><span class="token punctuation">(</span>mqd<span class="token punctuation">,</span> content<span class="token punctuation">,</span> attr<span class="token punctuation">.</span>mq_msgsize<span class="token punctuation">,</span> <span class="token operator">&amp;</span>prio<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>len <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;receive content faild, %s\n&quot;</span><span class="token punctuation">,</span> <span class="token function">strerror</span><span class="token punctuation">(</span>errno<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword keyword-return">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    content<span class="token punctuation">[</span>len<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&apos;\0&apos;</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%s\n&quot;</span><span class="token punctuation">,</span> content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword keyword-return">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre>
+    <div class="code-title">
+      <a name="&#x4F7F;&#x7528; mq_receive &#x63A5;&#x53D7;&#x6D88;&#x606F;">&#x4F7F;&#x7528; mq_receive &#x63A5;&#x53D7;&#x6D88;&#x606F;</a>
+      <span>text</span>
+    </div>
+    <pre data-role="codeBlock" data-info="text { file=&quot;&#x4F7F;&#x7528; mq_receive &#x63A5;&#x53D7;&#x6D88;&#x606F;&quot; }" class="language-text">[root@fangjin posix]# ./mq_receive -h
+Options:
+  -h, --help
+  -n, --name=name  Message queue name
+Usage:
+  mq_receive -n /some.queue -p 4
+[root@fangjin posix]# ./mq_receive -n /test.queue
+hello!
+</pre><h3 class="mume-header" id="mq_notify">mq_notify</h3>
+
 
     </div>
     
