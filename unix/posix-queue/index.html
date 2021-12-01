@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.fangjin.life/images/unix/posix-queue/queue-list.drawio.svg">
 <meta property="article:published_time" content="2021-11-17T06:45:00.000Z">
-<meta property="article:modified_time" content="2021-11-30T09:56:35.174Z">
+<meta property="article:modified_time" content="2021-12-01T10:02:00.476Z">
 <meta property="article:author" content="fangjin">
 <meta property="article:tag" content="Unix">
 <meta name="twitter:card" content="summary">
@@ -735,7 +735,7 @@ gcc -g -o mq_unlink mq_unlink.o -lrt
   <span class="token punctuation">}</span>
   <span class="token keyword keyword-struct">struct</span> <span class="token class-name">mq_attr</span> attr<span class="token punctuation">;</span>
   <span class="token function">mq_getattr</span><span class="token punctuation">(</span>mqd<span class="token punctuation">,</span> <span class="token operator">&amp;</span>attr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;flags = %ld, max #msgs = %ld, max #bytes/msg = %ld, #currently on queue = %ld\n&quot;</span><span class="token punctuation">,</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;flags = %ld, max #msgs = %ld, max #bytes/msg = %ld, #currently on queue = %ld\n&quot;</span><span class="token punctuation">,</span>             
     attr<span class="token punctuation">.</span>mq_flags<span class="token punctuation">,</span> attr<span class="token punctuation">.</span>mq_maxmsg<span class="token punctuation">,</span> attr<span class="token punctuation">.</span>mq_msgsize<span class="token punctuation">,</span> attr<span class="token punctuation">.</span>mq_curmsgs<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token function">mq_close</span><span class="token punctuation">(</span>mqd<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword keyword-return">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
