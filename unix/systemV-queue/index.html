@@ -25,8 +25,8 @@
 <meta property="og:site_name" content="方瑾的博客">
 <meta property="og:description" content="&#x2F;* http:&#x2F;&#x2F;prismjs.com&#x2F;download.html?themes&#x3D;prism&amp;languages&#x3D;markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-12-07T03:03:31.268Z">
-<meta property="article:modified_time" content="2021-12-07T03:03:31.268Z">
+<meta property="article:published_time" content="2021-12-08T07:41:08.743Z">
+<meta property="article:modified_time" content="2021-12-08T07:41:08.743Z">
 <meta property="article:author" content="fangjin">
 <meta property="article:tag" content="Unix">
 <meta name="twitter:card" content="summary">
@@ -207,7 +207,7 @@
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
 	<a href="/unix/systemV-queue/" class="article-date">
-	  <time datetime="2021-12-07T03:03:31.268Z" itemprop="datePublished">2021-12-07</time>
+	  <time datetime="2021-12-08T07:41:08.743Z" itemprop="datePublished">2021-12-08</time>
 	</a>
 </span>
         
@@ -240,10 +240,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/unix/systemV-queue/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.7k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 23(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 24(分)</span>
 	
 
       </div>
@@ -478,10 +478,10 @@ pre[data-line] {
 <p>&#x5BF9;&#x4E8E;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x6D88;&#x606F;&#x961F;&#x5217;&#xFF0C;&#x5185;&#x6838;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x5B9A;&#x4E49;&#x5728; &lt;sys/msg.h&gt; &#x5934;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x4FE1;&#x606F;&#x7ED3;&#x6784;&#xFF1A;</p>
 
     <div class="code-title">
-      <a name="undefined">code</a>
+      <a name="msqid_ds">msqid_ds</a>
       <span>c</span>
     </div>
-    <pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword keyword-struct">struct</span> <span class="token class-name">msqid_ds</span> <span class="token punctuation">{</span>
+    <pre data-role="codeBlock" data-info="c { file=msqid_ds }" class="language-c"><span class="token keyword keyword-struct">struct</span> <span class="token class-name">msqid_ds</span> <span class="token punctuation">{</span>
   <span class="token comment">// structure describing operation permission</span>
   <span class="token keyword keyword-struct">struct</span> <span class="token class-name">ipc_perm</span> msg_perm<span class="token punctuation">;</span>
 
@@ -522,7 +522,39 @@ pre[data-line] {
     <pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/msg.h&gt;</span></span>
 <span class="token keyword keyword-int">int</span> <span class="token function">msgget</span><span class="token punctuation">(</span><span class="token class-name">key_t</span> key<span class="token punctuation">,</span> <span class="token keyword keyword-int">int</span> oflag<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </pre><p>msgget &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x5176;&#x5B83;&#x4E09;&#x4E2A; msg &#x51FD;&#x6570;&#x5C06;&#x7528;&#x8BE5;&#x6807;&#x8BC6;&#x7B26;&#x6765;&#x6307;&#x4EE3;&#x8BE5;&#x961F;&#x5217;&#x3002;&#x6807;&#x8BC6;&#x7B26;&#x662F;&#x57FA;&#x4E8E;&#x53C2;&#x6570; <code>key</code> &#x4EA7;&#x751F;&#x7684;&#xFF0C;&#x800C; <code>key</code> &#x65E2;&#x53EF;&#x4EE5;&#x662F; ftok &#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x5E38;&#x503C; <code>IPC_PRIVATE</code>&#x3002;</p>
-<p><a href="../posix-queue/#oflag">oflag</a> &#x4E3A;&#x8BFB;&#x5199;&#x6743;&#x9650;&#x7684;&#x7EC4;&#x5408;&#xFF0C;&#x5728;&#x6B64;&#x5904;&#x8FD8;&#x53EF;&#x4EE5;&#x4E0E; <code>IPC_CREAT</code>&#x3001;<code>IPC_IPC_CREAT | IPC_EXCL</code> &#x6309;&#x4F4D;&#x6216;&#xFF0C;&#x8FD9;&#x5C06;&#x4F1A;&#x5728;&#x540E;&#x7EED;&#x5185;&#x5BB9;&#x8BA8;&#x8BBA;&#x3002;</p>
+<p><code>oflag</code> &#x4E3A; IPC &#x673A;&#x5236;&#x7684;&#x6743;&#x9650;&#x4F4D;&#xFF1A;</p>
+<table>
+  <tbody><tr><th rowspan="2">&#x6570;&#x5B57;&#x503C;&#xFF08;&#x516B;&#x8FDB;&#x5236;&#xFF09;</th>
+  <th colspan="3">&#x7B26;&#x53F7;&#x503C;</th>
+  <th rowspan="2">&#x8BF4;&#x660E;</th>
+  </tr><tr>
+    <td>&#x6D88;&#x606F;&#x961F;&#x5217;</td>
+    <td>&#x4FE1;&#x53F7;&#x91CF;</td>
+    <td>&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x533A;</td>
+  </tr>
+  <tr>
+    <td>0400<br>0200</td>
+    <td>MSG_R<br>MSG_W</td>
+    <td>SHM_R<br>SHM_A</td>
+    <td>SHM_R<br>SHM_W</td>
+    <td>&#x7531;&#x7528;&#x6237;&#xFF08;&#x5C5E;&#x4E3B;&#xFF09;&#x8BFB;<br>&#x7531;&#x7528;&#x6237;&#xFF08;&#x5C5E;&#x4E3B;&#xFF09;&#x5199;</td>
+  </tr>
+  <tr>
+    <td>0040<br>0020</td>
+    <td>MSG_R &gt;&gt; 3<br>MSG_W &gt;&gt; 3</td>
+    <td>SHM_R &gt;&gt; 3<br>SHM_A &gt;&gt; 3</td>
+    <td>SHM_R &gt;&gt; 3<br>SHM_W &gt;&gt; 3</td>
+    <td>&#x7531;&#xFF08;&#x5C5E;&#xFF09;&#x7EC4;&#x6210;&#x5458;&#x8BFB;<br>&#x7531;&#xFF08;&#x5C5E;&#xFF09;&#x7EC4;&#x6210;&#x5458;&#x5199;</td>
+  </tr>
+  <tr>
+    <td>0004<br>0002</td>
+    <td>MSG_R &gt;&gt; 6<br>MSG_W &gt;&gt; 6</td>
+    <td>SHM_R &gt;&gt; 6<br>SHM_A &gt;&gt; 6</td>
+    <td>SHM_R &gt;&gt; 6<br>SHM_W &gt;&gt; 6</td>
+    <td>&#x7531;&#x5176;&#x4ED6;&#x7528;&#x6237;&#x8BFB;<br>&#x7531;&#x5176;&#x4ED6;&#x7528;&#x6237;&#x5199;</td>
+  </tr>
+</tbody></table>
+<p>&#x5728;&#x6B64;&#x5904;&#x8FD8;&#x53EF;&#x4EE5;&#x4E0E; <code>IPC_CREAT</code>&#x3001;<code>IPC_IPC_CREAT | IPC_EXCL</code> &#x6309;&#x4F4D;&#x6216;&#xFF0C;&#x8FD9;&#x5C06;&#x4F1A;&#x5728;&#x540E;&#x7EED;&#x5185;&#x5BB9;&#x8BA8;&#x8BBA;&#x3002;</p>
 <p>&#x5F53;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x6D88;&#x606F;&#x961F;&#x5217;&#x65F6;&#xFF0C;msqid_ds &#x7ED3;&#x6784;&#x7684;&#x5982;&#x4E0B;&#x6210;&#x5458;&#x88AB;&#x521D;&#x59CB;&#x5316;&#xFF1A;</p>
 <ul>
 <li>
@@ -543,6 +575,30 @@ pre[data-line] {
 </ul>
 <h3 class="mume-header" id="msgsnd">msgsnd</h3>
 
+<p>&#x4F7F;&#x7528; msgget &#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#x961F;&#x5217;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; msgsnd &#x5F80;&#x5176;&#x4E0A;&#x653E;&#x7F6E;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#x3002;</p>
+
+    <div class="code-title">
+      <a name="undefined">code</a>
+      <span>c</span>
+    </div>
+    <pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/msg.h&gt;</span></span>
+
+<span class="token comment">// &#x6210;&#x529F;&#x8FD4;&#x56DE; 0&#xFF0C;&#x51FA;&#x9519;&#x8FD4;&#x56DE; -1</span>
+<span class="token keyword keyword-int">int</span> <span class="token function">msgsnd</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> msqid<span class="token punctuation">,</span> <span class="token keyword keyword-const">const</span> <span class="token keyword keyword-void">void</span> <span class="token operator">*</span>ptr<span class="token punctuation">,</span> <span class="token class-name">size_t</span> length<span class="token punctuation">,</span> <span class="token keyword keyword-int">int</span> flag<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p>&#x5176;&#x4E2D; <code>msqid</code> &#x662F; msgget &#x8FD4;&#x56DE;&#x7684;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;<code>ptr</code> &#x662F;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x6307;&#x9488;&#xFF0C;&#x8BE5;&#x7ED3;&#x6784;&#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x7684;&#x6A21;&#x677F;&#xFF0C;&#x5B9A;&#x4E49;&#x5728; &lt;sys/msg.h&gt; &#x4E2D;&#xFF1A;</p>
+
+    <div class="code-title">
+      <a name="msgbuf">msgbuf</a>
+      <span>c</span>
+    </div>
+    <pre data-role="codeBlock" data-info="c { file=msgbuf }" class="language-c"><span class="token keyword keyword-struct">struct</span> <span class="token class-name">msgbuf</span> <span class="token punctuation">{</span>
+  <span class="token comment">// message type, must be &gt; 0</span>
+  <span class="token keyword keyword-long">long</span> mtype<span class="token punctuation">;</span>
+
+  <span class="token comment">// message data</span>
+  <span class="token keyword keyword-char">char</span> mtext<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p>&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x5927;&#x4E8E; 0&#xFF0C;&#x56E0;&#x4E3A;&#x5BF9;&#x4E8E; msgrcv &#x51FD;&#x6570;&#x6765;&#x8BF4;&#xFF0C;&#x975E;&#x6B63;&#x7684;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x7528;&#x505A;&#x7279;&#x6B8A;&#x7684;&#x6307;&#x793A;&#x5668;&#xFF0C;&#x8FD9;&#x5C06;&#x5728;<a href>&#x540E;&#x7EED;&#x5185;&#x5BB9;</a>&#x8BB2;&#x8FF0;&#x3002;</p>
 
     </div>
     
