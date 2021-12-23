@@ -28,8 +28,10 @@
 <meta property="og:image" content="http://blog.fangjin.life/images/big-data/hadoop/hdfs.drawio.svg">
 <meta property="og:image" content="http://blog.fangjin.life/images/big-data/hadoop/mapreduce.drawio.svg">
 <meta property="og:image" content="http://blog.fangjin.life/images/big-data/hadoop/yarn.drawio.svg">
+<meta property="og:image" content="http://blog.fangjin.life/images/big-data/hadoop/plan.drawio.svg">
+<meta property="og:image" content="http://blog.fangjin.life/images/big-data/hadoop/hadoop-env.png">
 <meta property="article:published_time" content="2021-12-21T06:25:00.000Z">
-<meta property="article:modified_time" content="2021-12-22T10:53:21.374Z">
+<meta property="article:modified_time" content="2021-12-23T09:19:16.460Z">
 <meta property="article:author" content="fangjin">
 <meta property="article:tag" content="Hadoop">
 <meta property="article:tag" content="HDFS">
@@ -188,7 +190,7 @@
   <div class="">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#hadoop-%E6%9E%B6%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">Hadoop 架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hdfs"><span class="toc-number">1.1.</span> <span class="toc-text">HDFS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mapreduce"><span class="toc-number">1.2.</span> <span class="toc-text">MapReduce</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#yarn"><span class="toc-number">1.3.</span> <span class="toc-text">Yarn</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#hadoop-%E6%9E%B6%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">Hadoop 架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hdfs"><span class="toc-number">1.1.</span> <span class="toc-text">HDFS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mapreduce"><span class="toc-number">1.2.</span> <span class="toc-text">MapReduce</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#yarn"><span class="toc-number">1.3.</span> <span class="toc-text">Yarn</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA"><span class="toc-number">2.</span> <span class="toc-text">集群搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E8%A7%84%E5%88%92"><span class="toc-number">2.1.</span> <span class="toc-text">集群规划</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%87%86%E5%A4%87"><span class="toc-number">2.2.</span> <span class="toc-text">安装准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hdfs-%E9%85%8D%E7%BD%AE"><span class="toc-number">2.3.</span> <span class="toc-text">HDFS 配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mapreduce-%E9%85%8D%E7%BD%AE"><span class="toc-number">2.4.</span> <span class="toc-text">MapReduce 配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#yarn-%E9%85%8D%E7%BD%AE"><span class="toc-number">2.5.</span> <span class="toc-text">Yarn 配置</span></a></li></ol></li></ol>
     </nav>
   </div>
 </aside>
@@ -245,10 +247,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/big-data/hadoop/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4.5k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5.1k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 28(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 32(分)</span>
 	
 
       </div>
@@ -554,7 +556,158 @@ pre[data-line] {
 <p>&#x5BB9;&#x5668;&#x4E2D;&#x8FD0;&#x884C;&#x7684;&#x4EFB;&#x52A1;&#x4F1A;&#x5411; ApplicationMaster &#x53D1;&#x9001;&#x5FC3;&#x8DF3;&#xFF0C;&#x6C47;&#x62A5;&#x81EA;&#x8EAB;&#x60C5;&#x51B5;&#x3002;&#x5F53;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x5B8C;&#x6210;&#x540E;&#xFF0C; ApplicationMaster &#x518D;&#x5411; ResourceManager &#x6CE8;&#x9500;&#x5E76;&#x91CA;&#x653E;&#x5BB9;&#x5668;&#x8D44;&#x6E90;&#x3002;</p>
 </li>
 </ol>
+<h3 class="mume-header" id="%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA">&#x96C6;&#x7FA4;&#x642D;&#x5EFA;</h3>
 
+<h4 class="mume-header" id="%E9%9B%86%E7%BE%A4%E8%A7%84%E5%88%92">&#x96C6;&#x7FA4;&#x89C4;&#x5212;</h4>
+
+<p><img src="/images/big-data/hadoop/plan.drawio.svg" alt></p>
+<h4 class="mume-header" id="%E5%AE%89%E8%A3%85%E5%87%86%E5%A4%87">&#x5B89;&#x88C5;&#x51C6;&#x5907;</h4>
+
+<p>&#x5728;&#x4E09;&#x53F0;&#x673A;&#x5668;&#x4E0A;&#x5747;&#x51C6;&#x5907;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p>
+<ul>
+<li>Java
+    <div class="code-title">
+      <a name="install.sh">install.sh</a>
+      <span>shell</span>
+    </div>
+    <pre data-role="codeBlock" data-info="shell { file=install.sh }" class="language-shell">yum -y <span class="token function">install</span> java-1.8.0-openjdk java-1.8.0-openjdk-devel
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.312.b07-1.el7_9.x86_64&quot;</span> <span class="token operator">&gt;&gt;</span> ~/.bashrc
+<span class="token builtin class-name">source</span> ~/.bashrc
+</pre></li>
+<li>Hadoop
+    <div class="code-title">
+      <a name="undefined">code</a>
+      <span>shell</span>
+    </div>
+    <pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">wget</span> https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz --no-check-certificate -O /download/hadoop-3.3.1.tar.gz
+<span class="token function">tar</span> -xvf hadoop-3.3.1.tar.gz -C /opt/
+</pre></li>
+</ul>
+<p>&#x9A8C;&#x8BC1;&#xFF1A;</p>
+
+    <div class="code-title">
+      <a name="undefined">code</a>
+      <span>text</span>
+    </div>
+    <pre data-role="codeBlock" data-info="text" class="language-text">[root@dell /]# /opt/hadoop-3.3.1/bin/hadoop version
+Hadoop 3.3.1
+Source code repository https://github.com/apache/hadoop.git -r a3b9c37a397ad4188041dd80621bdeefc46885f2
+Compiled by ubuntu on 2021-06-15T05:13Z
+Compiled with protoc 3.7.1
+From source with checksum 88a4ddb2299aca054416d6b7f81ca55
+This command was run using /opt/hadoop-3.3.1/share/hadoop/common/hadoop-common-3.3.1.jar
+[root@dell /]# echo $JAVA_HOME
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.312.b07-1.el7_9.x86_64
+[root@dell /]# java -version
+openjdk version &quot;1.8.0_312&quot;
+OpenJDK Runtime Environment (build 1.8.0_312-b07)
+OpenJDK 64-Bit Server VM (build 25.312-b07, mixed mode)
+[root@dell /]# javac -version
+javac 1.8.0_312
+</pre><h4 class="mume-header" id="hdfs-%E9%85%8D%E7%BD%AE">HDFS &#x914D;&#x7F6E;</h4>
+
+<blockquote>
+<p>Hadoop &#x7684;&#x914D;&#x7F6E;&#x5747;&#x5728; <code>/opt/hadoop-3.3.1/etc/hadoop</code> &#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x4E0B;&#x6587; shell &#x73AF;&#x5883;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x5747;&#x4E3A;&#x6B64;&#x76EE;&#x5F55;&#x3002;</p>
+</blockquote>
+<ol>
+<li>&#x914D;&#x7F6E;&#x6240;&#x4F7F;&#x7528;&#x7684; JDK &#x8DEF;&#x5F84;</li>
+</ol>
+<p>&#x56E0;&#x4E3A;&#x5728;&#x4E0A;&#x4E00;&#x8282;&#x5B89;&#x88C5; java &#x7684;&#x65F6;&#x5019;&#x5DF2;&#x7ECF;&#x914D;&#x7F6E;&#x4E86;&#x73AF;&#x5883;&#x53D8;&#x91CF; <code>JAVA_HOME</code>&#xFF0C;&#x6240;&#x4EE5;&#x6B64;&#x6B65;&#x9AA4;&#x53EF;&#x4EE5;&#x7701;&#x7565;&#xFF0C;&#x4F46;&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x53E6;&#x5916;&#x7684; jdk &#x7ED9; hadoop &#x4F7F;&#x7528;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x7F16;&#x8F91; <code>hadoop-env.sh</code> &#x6307;&#x5B9A;&#x8DEF;&#x5F84;&#x3002;</p>
+
+    <div class="code-title">
+      <a name="undefined">code</a>
+      <span>shell</span>
+    </div>
+    <pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">vi</span> hadoop-env.sh
+</pre><p><img src="/images/big-data/hadoop/hadoop-env.png" alt></p>
+<ol start="2">
+<li>&#x6307;&#x5B9A; NameNode &#x8282;&#x70B9;&#x4EE5;&#x53CA;&#x5B58;&#x50A8;&#x76EE;&#x5F55;</li>
+</ol>
+<p>&#x6587;&#x6863;&#xFF1A;<a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/core-default.xml">core-default.xml</a></p>
+
+    <div class="code-title">
+      <a name="undefined">code</a>
+      <span>shell</span>
+    </div>
+    <pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">mkdir</span> -p /data/hadoop
+</pre>
+    <div class="code-title">
+      <a name="core-site.xml">core-site.xml</a>
+      <span>xml</span>
+    </div>
+    <pre data-role="codeBlock" data-info="xml { file=core-site.xml }" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>fs.defaultFS<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>hdfs://192.168.8.9:9000<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>hadoop.tmp.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>/data/hadoop<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+</pre><ol start="3">
+<li>&#x6307;&#x5B9A; SecondaryNameNode &#x8282;&#x70B9;</li>
+</ol>
+<p>&#x6587;&#x6863;&#xFF1A;<a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml">hdfs-default.xml</a></p>
+
+    <div class="code-title">
+      <a name="hdfs-site.xml">hdfs-site.xml</a>
+      <span>xml</span>
+    </div>
+    <pre data-role="codeBlock" data-info="xml { file=hdfs-site.xml }" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>dfs.namenode.secondary.http-address<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>192.168.8.60:50090<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>dfs.replication<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+</pre><ol start="4">
+<li>&#x6307;&#x5B9A; DataNode &#x8282;&#x70B9;</li>
+</ol>
+
+    <div class="code-title">
+      <a name="workers">workers</a>
+      <span>text</span>
+    </div>
+    <pre data-role="codeBlock" data-info="text { file=workers }" class="language-text">192.168.8.8
+192.168.8.9
+192.168.8.60
+</pre><h4 class="mume-header" id="mapreduce-%E9%85%8D%E7%BD%AE">MapReduce &#x914D;&#x7F6E;</h4>
+
+<p>&#x6587;&#x6863;&#xFF1A;<a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml">mapred-default.xml</a></p>
+
+    <div class="code-title">
+      <a name="mapred-site.xml">mapred-site.xml</a>
+      <span>xml</span>
+    </div>
+    <pre data-role="codeBlock" data-info="xml { file=mapred-site.xml }" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>mapreduce.framework.name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>yarn<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+</pre><h4 class="mume-header" id="yarn-%E9%85%8D%E7%BD%AE">Yarn &#x914D;&#x7F6E;</h4>
+
+<p>&#x6587;&#x6863;&#xFF1A;<a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-common/yarn-default.xml">yarn-default.xml</a></p>
+
+    <div class="code-title">
+      <a name="yarn-site.xml">yarn-site.xml</a>
+      <span>xml</span>
+    </div>
+    <pre data-role="codeBlock" data-info="xml { file=yarn-site.xml }" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>yarn.resourcemanager.hostname<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>192.168.8.9<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>arn.nodemanager.aux-services<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>mapreduce_shuffle<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+</pre>
     </div>
     
     
