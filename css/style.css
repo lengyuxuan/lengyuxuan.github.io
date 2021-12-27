@@ -9209,3 +9209,8 @@ body.okayNav-loaded {
     max-height: 200px;
   }
 }
+
+.shell-symbol {
+  color: #42b983;
+  font-weight: 600;
+}

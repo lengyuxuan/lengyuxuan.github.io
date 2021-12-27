@@ -17,17 +17,17 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Posix 消息队列 | 方瑾</title>
+  <title>unix网络编程：Posix 消息队列 | 方瑾</title>
   <meta name="description" content="&#x2F;* http:&#x2F;&#x2F;prismjs.com&#x2F;download.html?themes&#x3D;prism&amp;languages&#x3D;markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Posix 消息队列">
+<meta property="og:title" content="unix网络编程：Posix 消息队列">
 <meta property="og:url" content="http://blog.fangjin.life/unix/posix-queue/index.html">
 <meta property="og:site_name" content="方瑾的博客">
 <meta property="og:description" content="&#x2F;* http:&#x2F;&#x2F;prismjs.com&#x2F;download.html?themes&#x3D;prism&amp;languages&#x3D;markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.fangjin.life/images/unix/posix-queue/queue-list.drawio.svg">
 <meta property="article:published_time" content="2021-11-17T06:45:00.000Z">
-<meta property="article:modified_time" content="2021-12-07T03:03:31.268Z">
+<meta property="article:modified_time" content="2021-12-27T11:19:59.364Z">
 <meta property="article:author" content="fangjin">
 <meta property="article:tag" content="Unix">
 <meta name="twitter:card" content="summary">
@@ -200,7 +200,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Posix 消息队列
+      unix网络编程：Posix 消息队列
     </h1>
   
 
@@ -236,7 +236,7 @@
 
 	<span class="article-read hidden-xs">
     	<i class="icon icon-eye-fill" aria-hidden="true"></i>
-    	<span id="/unix/posix-queue/" class="leancloud_visitors"  data-flag-title="Posix 消息队列">0</span>
+    	<span id="/unix/posix-queue/" class="leancloud_visitors"  data-flag-title="unix网络编程：Posix 消息队列">0</span>
     </span>
 
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/unix/posix-queue/#comments" class="article-comment-link">评论</a></span>
@@ -595,12 +595,12 @@ objects <span class="token operator">=</span> <span class="token variable">$</sp
 
     <div class="code-title">
       <a name="&#x4F7F;&#x7528; mq_create &#x521B;&#x5EFA;&#x6D88;&#x606F;&#x961F;&#x5217;">&#x4F7F;&#x7528; mq_create &#x521B;&#x5EFA;&#x6D88;&#x606F;&#x961F;&#x5217;</a>
-      <span>text</span>
+      <span>shell-session</span>
     </div>
-    <pre data-role="codeBlock" data-info="text { file=&quot;&#x4F7F;&#x7528; mq_create &#x521B;&#x5EFA;&#x6D88;&#x606F;&#x961F;&#x5217;&quot; }" class="language-text">[root@fangjin posix]# make mq_create
+    <pre data-role="codeBlock" data-info="shell-session { file=&quot;&#x4F7F;&#x7528; mq_create &#x521B;&#x5EFA;&#x6D88;&#x606F;&#x961F;&#x5217;&quot; }" class="language-shell-session"><span class="token shell-symbol">[root@fangjin posix]#</span> make mq_create
 gcc -g -c mq_create.c -lrt
 gcc -g -o mq_create mq_create.o -lrt
-[root@fangjin posix]# ./mq_create -h
+<span class="token shell-symbol">[root@fangjin posix]#</span> ./mq_create -h
 Options:
   -h, --help
   -m, --maxmsg=mq_maxmsg Set mq_maxmsg
@@ -608,12 +608,11 @@ Options:
   -e, Check file exists, if exists then exit
 Usage:
   mq_create -m 12 -s 100 -e /some.queue
-[root@fangjin posix]# ./mq_create -m 100 -s 30 /test.queue
-[root@fangjin posix]# ./mq_create -e -m 100 -s 30 /test.queue # &#x6307;&#x5B9A; -e &#x53C2;&#x6570;&#x540E;&#x521B;&#x5EFA;&#x5931;&#x8D25;
+<span class="token shell-symbol">[root@fangjin posix]#</span> ./mq_create -m 100 -s 30 /test.queue
+<span class="token shell-symbol">[root@fangjin posix]#</span> ./mq_create -e -m 100 -s 30 /test.queue # &#x6307;&#x5B9A; -e &#x53C2;&#x6570;&#x540E;&#x521B;&#x5EFA;&#x5931;&#x8D25;
 open message queue /test.queue error [File exists]
-[root@fangjin posix]# ls /dev/mqueue/
+<span class="token shell-symbol">[root@fangjin posix]#</span> ls /dev/mqueue/
 test.queue
-[root@fangjin posix]#
 </pre><p>Linux &#x4E0B;&#x7684; Posix &#x6D88;&#x606F;&#x961F;&#x5217;&#x662F;&#x5728; vfs &#x4E2D;&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#xFF1A;</p>
 
     <div class="code-title">
@@ -666,14 +665,14 @@ test.queue
 
     <div class="code-title">
       <a name="&#x4F7F;&#x7528; mq_unlink &#x5220;&#x9664;&#x6D88;&#x606F;&#x961F;&#x5217;">&#x4F7F;&#x7528; mq_unlink &#x5220;&#x9664;&#x6D88;&#x606F;&#x961F;&#x5217;</a>
-      <span>text</span>
+      <span>shell-session</span>
     </div>
-    <pre data-role="codeBlock" data-info="text { file=&quot;&#x4F7F;&#x7528; mq_unlink &#x5220;&#x9664;&#x6D88;&#x606F;&#x961F;&#x5217;&quot; }" class="language-text">[root@fangjin posix]# make mq_unlink
+    <pre data-role="codeBlock" data-info="shell-session { file=&quot;&#x4F7F;&#x7528; mq_unlink &#x5220;&#x9664;&#x6D88;&#x606F;&#x961F;&#x5217;&quot; }" class="language-shell-session"><span class="token shell-symbol">[root@fangjin posix]#</span> make mq_unlink
 gcc -g -c mq_unlink.c -lrt
 gcc -g -o mq_unlink mq_unlink.o -lrt
-[root@fangjin posix]# ./mq_unlink /test.queue
-[root@fangjin posix]# ls /dev/mqueue/
-[root@fangjin posix]#
+<span class="token shell-symbol">[root@fangjin posix]#</span> ./mq_unlink /test.queue
+<span class="token shell-symbol">[root@fangjin posix]#</span> ls /dev/mqueue/
+<span class="token shell-symbol">[root@fangjin posix]#</span>
 </pre><h3 class="mume-header" id="mq_setattrr"><a href="#mq_setattrr">mq_setattrr</a></h3>
 
 
@@ -744,15 +743,14 @@ gcc -g -o mq_unlink mq_unlink.o -lrt
 </pre>
     <div class="code-title">
       <a name="&#x4F7F;&#x7528; mq_getattr &#x67E5;&#x8BE2;&#x6D88;&#x606F;&#x961F;&#x5217;&#x5C5E;&#x6027;">&#x4F7F;&#x7528; mq_getattr &#x67E5;&#x8BE2;&#x6D88;&#x606F;&#x961F;&#x5217;&#x5C5E;&#x6027;</a>
-      <span>text</span>
+      <span>shell-session</span>
     </div>
-    <pre data-role="codeBlock" data-info="text { file=&quot;&#x4F7F;&#x7528; mq_getattr &#x67E5;&#x8BE2;&#x6D88;&#x606F;&#x961F;&#x5217;&#x5C5E;&#x6027;&quot; }" class="language-text">[root@fangjin posix]# make mq_getattr
+    <pre data-role="codeBlock" data-info="shell-session { file=&quot;&#x4F7F;&#x7528; mq_getattr &#x67E5;&#x8BE2;&#x6D88;&#x606F;&#x961F;&#x5217;&#x5C5E;&#x6027;&quot; }" class="language-shell-session"><span class="token shell-symbol">[root@fangjin posix]#</span> make mq_getattr
 gcc -g -c mq_getattr.c -lrt
 gcc -g -o mq_getattr mq_getattr.o -lrt
-[root@fangjin posix]# ./mq_create -m 100 -s 30 /test.queue
-[root@fangjin posix]# ./mq_getattr /test.queue
+<span class="token shell-symbol">[root@fangjin posix]#</span> ./mq_create -m 100 -s 30 /test.queue
+<span class="token shell-symbol">[root@fangjin posix]#</span> ./mq_getattr /test.queue
 flags = 0, max #msgs = 100, max #bytes/msg = 30, #currently on queue = 0
-[root@fangjin posix]# 
 </pre><h3 class="mume-header" id="mq_send"><a href="#mq_send">mq_send</a></h3>
 
 
@@ -835,17 +833,16 @@ flags = 0, max #msgs = 100, max #bytes/msg = 30, #currently on queue = 0
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre>
     <div class="code-title">
       <a name="&#x4F7F;&#x7528; mq_send &#x5411;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4E2D;&#x6DFB;&#x52A0;&#x6D88;&#x606F;">&#x4F7F;&#x7528; mq_send &#x5411;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4E2D;&#x6DFB;&#x52A0;&#x6D88;&#x606F;</a>
-      <span>text</span>
+      <span>shell-session</span>
     </div>
-    <pre data-role="codeBlock" data-info="text { file=&quot;&#x4F7F;&#x7528; mq_send &#x5411;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4E2D;&#x6DFB;&#x52A0;&#x6D88;&#x606F;&quot; }" class="language-text">[root@fangjin posix]# ./mq_send -h
+    <pre data-role="codeBlock" data-info="shell-session { file=&quot;&#x4F7F;&#x7528; mq_send &#x5411;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4E2D;&#x6DFB;&#x52A0;&#x6D88;&#x606F;&quot; }" class="language-shell-session"><span class="token shell-symbol">[root@fangjin posix]#</span> ./mq_send -h
 Options:
   -h, --help
   -n, --name=name  Message queue name
   -p, --prio=number  Set message priority
 Usage:
   mq_send -n /some.queue -p 4 -c hello!
-[root@fangjin posix]# ./mq_send -n /test.queue hello!
-[root@fangjin posix]#
+<span class="token shell-symbol">[root@fangjin posix]#</span> ./mq_send -n /test.queue hello!
 </pre><h3 class="mume-header" id="mq_receive"><a href="#mq_receive">mq_receive</a></h3>
 
 
@@ -925,15 +922,15 @@ Usage:
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre>
     <div class="code-title">
       <a name="&#x4F7F;&#x7528; mq_receive &#x63A5;&#x53D7;&#x6D88;&#x606F;">&#x4F7F;&#x7528; mq_receive &#x63A5;&#x53D7;&#x6D88;&#x606F;</a>
-      <span>text</span>
+      <span>shell-session</span>
     </div>
-    <pre data-role="codeBlock" data-info="text { file=&quot;&#x4F7F;&#x7528; mq_receive &#x63A5;&#x53D7;&#x6D88;&#x606F;&quot; }" class="language-text">[root@fangjin posix]# ./mq_receive -h
+    <pre data-role="codeBlock" data-info="shell-session { file=&quot;&#x4F7F;&#x7528; mq_receive &#x63A5;&#x53D7;&#x6D88;&#x606F;&quot; }" class="language-shell-session"><span class="token shell-symbol">[root@fangjin posix]#</span> ./mq_receive -h
 Options:
   -h, --help
   -n, --name=name  Message queue name
 Usage:
   mq_receive -n /some.queue -p 4
-[root@fangjin posix]# ./mq_receive -n /test.queue
+<span class="token shell-symbol">[root@fangjin posix]#</span> ./mq_receive -n /test.queue
 hello!
 </pre><h3 class="mume-header" id="mq_notify"><a href="#mq_notify">mq_notify</a></h3>
 
@@ -956,7 +953,7 @@ hello!
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://blog.fangjin.life/unix/posix-queue/" title="Posix 消息队列" target="_blank" rel="external">http://blog.fangjin.life/unix/posix-queue/</a>
+      <a href="http://blog.fangjin.life/unix/posix-queue/" title="unix网络编程：Posix 消息队列" target="_blank" rel="external">http://blog.fangjin.life/unix/posix-queue/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -1001,12 +998,12 @@ hello!
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/osi/transport/" title="传输层"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/osi/transport/" title="计算机网络：传输层"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/unix/pipe/" title="管道和FIFO"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/unix/pipe/" title="unix网络编程：管道和FIFO"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

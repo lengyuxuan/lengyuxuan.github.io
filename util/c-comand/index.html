@@ -26,7 +26,7 @@
 <meta property="og:description" content="&#x2F;* http:&#x2F;&#x2F;prismjs.com&#x2F;download.html?themes&#x3D;prism&amp;languages&#x3D;markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-26T08:34:00.000Z">
-<meta property="article:modified_time" content="2021-11-30T09:56:35.174Z">
+<meta property="article:modified_time" content="2021-12-27T11:19:59.364Z">
 <meta property="article:author" content="fangjin">
 <meta property="article:tag" content="c">
 <meta name="twitter:card" content="summary">
@@ -530,12 +530,12 @@ pre[data-line] {
 
     <div class="code-title">
       <a name="undefined">code</a>
-      <span>text</span>
+      <span>shell-session</span>
     </div>
-    <pre data-role="codeBlock" data-info="text" class="language-text">[root@fangjin test]# make main
+    <pre data-role="codeBlock" data-info="shell-session" class="language-shell-session"><span class="token shell-symbol">[root@fangjin test]#</span> make main
 gcc -g -c main.c
 gcc -g -o main main.o
-[root@fangjin test]# ./main -a -b -c xxx -dyyy
+<span class="token shell-symbol">[root@fangjin test]#</span> ./main -a -b -c xxx -dyyy
 key[a] = value[(null)]
 key[b] = value[(null)]
 key[c] = value[xxx]
@@ -544,9 +544,9 @@ key[d] = value[yyy]
 
     <div class="code-title">
       <a name="undefined">code</a>
-      <span>text</span>
+      <span>shell-session</span>
     </div>
-    <pre data-role="codeBlock" data-info="text" class="language-text">[root@fangjin test]# ./main -a -b -c -dyyy -z
+    <pre data-role="codeBlock" data-info="shell-session" class="language-shell-session"><span class="token shell-symbol">[root@fangjin test]#</span> ./main -a -b -c -dyyy -z
 key[a] = value[(null)]
 key[b] = value[777]
 key[c] = value[xxx]
@@ -611,9 +611,9 @@ Unknown option: z
 </div></div></pre>
     <div class="code-title">
       <a name="undefined">code</a>
-      <span>text</span>
+      <span>shell-session</span>
     </div>
-    <pre data-role="codeBlock" data-info="text" class="language-text">[root@fangjin test]# ./main -a -b -c xxx -dyyy -z 123 456 789
+    <pre data-role="codeBlock" data-info="shell-session" class="language-shell-session"><span class="token shell-symbol">[root@fangjin test]#</span> ./main -a -b -c xxx -dyyy -z 123 456 789
 key[a] = value[(null)]
 key[b] = value[(null)]
 key[c] = value[xxx]
@@ -626,9 +626,9 @@ Unknown option: z
 
     <div class="code-title">
       <a name="undefined">code</a>
-      <span>text</span>
+      <span>shell-session</span>
     </div>
-    <pre data-role="codeBlock" data-info="text" class="language-text">[root@fangjin test]# make main; ./main -a -b 789 -cxxx -dyyy -z 123 456
+    <pre data-role="codeBlock" data-info="shell-session" class="language-shell-session"><span class="token shell-symbol">[root@fangjin test]#</span> make main; ./main -a -b 789 -cxxx -dyyy -z 123 456
 make: &apos;main&apos; is up to date.
 key[a] = value[(null)]
 key[b] = value[(null)]
@@ -683,9 +683,9 @@ Unknown option: z
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre>
     <div class="code-title">
       <a name="undefined">code</a>
-      <span>text</span>
+      <span>shell-session</span>
     </div>
-    <pre data-role="codeBlock" data-info="text" class="language-text">[root@fangjin test]# ./main --name zhangsan --age 16
+    <pre data-role="codeBlock" data-info="shell-session" class="language-shell-session"><span class="token shell-symbol">[root@fangjin test]#</span> ./main --name zhangsan --age 16
 key[m] = value[zhangsan]
 key[s] = value[16]
 </pre>
@@ -754,7 +754,7 @@ key[s] = value[16]
     
     
     <li class="next">
-      <a href="/osi/transport/" title="传输层"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/osi/transport/" title="计算机网络：传输层"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
