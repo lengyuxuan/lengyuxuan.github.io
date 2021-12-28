@@ -187,7 +187,7 @@
         '<div class="magnify-header">' + this.createTitle() +
         '<a href="javascript:void(0)" class="magnify-btn-close" title="' + this.settings.i18n.close + '"></a>' +
         '</div>' +
-        '<div class="magnify-stage"><img src="" alt="" class="magnify-image" style="transform: rotate(0deg); transform-origin: 50% 50% 0px;"></div>' +
+        '<div class="magnify-stage"><img src="" alt="" class="magnify-image" style="transform: rotate(0deg); transform-origin: 50% 50% 0px; max-width: none;"></div>' +
         '<div class="magnify-footer"><div class="magnify-toolbar">' + this.createBtn(this.settings.Toolbar, btnTpl) + '</div></div>' +
         '</div>';
     },
@@ -400,7 +400,6 @@
       ratio = Math.max(ratio, this.settings.minRatio);
       ratio = Math.min(ratio, this.settings.maxRatio);
 
-
       var $image = this.$image;
       var $stage = this.$stage;
       var imgData = {
@@ -421,10 +420,10 @@
       var newLeft = origin.x - (origin.x - imgData.x) / imgData.w * newWidth;
       var newTop = origin.y - (origin.y - imgData.y) / imgData.h * newHeight;
 
-
-      var gt = !this.isRotated ? 0 : (newWidth - newHeight) / 2;
       var imgNewWidth = !this.isRotated ? newWidth : newHeight;
       var imgNewHeight = !this.isRotated ? newHeight : newWidth;
+
+      console.log(imgNewWidth);
 
       //先调整图片大小
       $image.css({
