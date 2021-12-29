@@ -124,6 +124,7 @@ sub {
 
 img {
   border: 0;
+  cursor: pointer;
 }
 
 svg:not(:root) {
@@ -9310,7 +9311,7 @@ body.okayNav-loaded {
 }
 
 .magnify-toolbar .magnify-btn:hover, .magnify-btn-close:hover {
-  color: #fff;
+  color: #333;
 }
 
 
