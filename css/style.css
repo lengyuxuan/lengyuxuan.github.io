@@ -6105,10 +6105,9 @@ body.no-sidebar .sidebar {
 }
 
 .bar.bar-footer {
-  position: fixed;
-  top: 0;
-  width: calc(100% - 585px);
-  border-bottom: 1px solid #dfdfdf;
+  position: relative;
+  background-color: #fff;
+  bottom: -15px;
 }
 
 .bar.bar-footer:before {

@@ -87,7 +87,7 @@ $(function() {
     if (tocIndex < 0) {
       tocIndex = 0;
     }
-    document.getElementById(tocList[tocIndex].slice(1)).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.getElementById(tocList[tocIndex].slice(1)).scrollIntoView({ behavior: 'smooth', block: 'start' });
     history.pushState(null, null, tocList[tocIndex]);
   });
 
@@ -97,7 +97,7 @@ $(function() {
     if (tocIndex > tocList.length - 1) {
       tocIndex = tocList.length - 1;
     }
-    document.getElementById(tocList[tocIndex].slice(1)).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.getElementById(tocList[tocIndex].slice(1)).scrollIntoView({ behavior: 'smooth', block: 'start' });
     history.pushState(null, null, tocList[tocIndex]);
   });
 
