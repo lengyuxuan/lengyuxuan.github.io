@@ -188,6 +188,25 @@
 </aside>
 
 
+<div class="toc-button">
+  <div id="toc-pre" name="pre" title="上一节"></div>
+  <div id="toc-top" name="top" title="返回顶部">顶部</div>
+  <div id="toc-bottom" name="bottom" title="滚至底部">底部</div>
+  <div id="toc-last" name="last" title="下一节"></div>
+</div>
+
+<script>
+  const content = `<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFhashmap"><span class="toc-number">1.</span> <span class="toc-text">什么是HashMap？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E9%94%AE%E5%80%BC%E5%AF%B9%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">定义键值对结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89hashmap%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-number">3.</span> <span class="toc-text">定义HashMap结构体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">哈希函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#put%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">put函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text">其它函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iterator%E6%8E%A5%E5%8F%A3"><span class="toc-number">7.</span> <span class="toc-text">Iterator接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95"><span class="toc-number">8.</span> <span class="toc-text">使用测试</span></a></li></ol>`;
+  const reg = /href="(?<toc>.+?)"/g;
+  let res = null;
+  const tocList = [];
+  while ((res = reg.exec(content))) {
+    if (res.groups.toc) {
+      tocList.push(res.groups.toc);
+    }
+  }
+</script>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-c-hashmap" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -1001,7 +1020,7 @@ key: 4545, exists: false
   
 </div>
 
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <nav class="bar bar-footer clearfix" id="navBar" data-stick-bottom>
   <div class="bar-inner">
   
   <ul class="pager pull-left">
@@ -1017,7 +1036,7 @@ key: 4545, exists: false
     
     
     <li class="toggle-toc">
-      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+      <a class="toggle-btn collapsed" id="tocSwitch" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
         <span>[&nbsp;</span><span>文章目录</span>
         <i class="text-collapsed icon icon-anchor"></i>
         <i class="text-in icon icon-close"></i>
@@ -1036,6 +1055,7 @@ key: 4545, exists: false
   </div>
   </div>
 </nav>
+
   
 
 

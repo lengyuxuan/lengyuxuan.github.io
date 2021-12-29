@@ -191,6 +191,25 @@
 </aside>
 
 
+<div class="toc-button">
+  <div id="toc-pre" name="pre" title="上一节"></div>
+  <div id="toc-top" name="top" title="返回顶部">顶部</div>
+  <div id="toc-bottom" name="bottom" title="滚至底部">底部</div>
+  <div id="toc-last" name="last" title="下一节"></div>
+</div>
+
+<script>
+  const content = `<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_open"><span class="toc-number">2.</span> <span class="toc-text">mq_open</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_close"><span class="toc-number">3.</span> <span class="toc-text">mq_close</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_unlink"><span class="toc-number">4.</span> <span class="toc-text">mq_unlink</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_setattrr"><span class="toc-number">5.</span> <span class="toc-text">mq_setattrr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_getattr"><span class="toc-number">6.</span> <span class="toc-text">mq_getattr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_send"><span class="toc-number">7.</span> <span class="toc-text">mq_send</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_receive"><span class="toc-number">8.</span> <span class="toc-text">mq_receive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq_notify"><span class="toc-number">9.</span> <span class="toc-text">mq_notify</span></a></li></ol>`;
+  const reg = /href="(?<toc>.+?)"/g;
+  let res = null;
+  const tocList = [];
+  while ((res = reg.exec(content))) {
+    if (res.groups.toc) {
+      tocList.push(res.groups.toc);
+    }
+  }
+</script>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-unix/posix-queue" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -992,7 +1011,7 @@ hello!
   
 </div>
 
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <nav class="bar bar-footer clearfix" id="navBar" data-stick-bottom>
   <div class="bar-inner">
   
   <ul class="pager pull-left">
@@ -1008,7 +1027,7 @@ hello!
     
     
     <li class="toggle-toc">
-      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+      <a class="toggle-btn collapsed" id="tocSwitch" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
         <span>[&nbsp;</span><span>文章目录</span>
         <i class="text-collapsed icon icon-anchor"></i>
         <i class="text-in icon icon-close"></i>
@@ -1027,6 +1046,7 @@ hello!
   </div>
   </div>
 </nav>
+
   
 
 

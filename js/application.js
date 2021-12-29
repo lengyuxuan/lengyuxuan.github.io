@@ -13,6 +13,10 @@ $(function() {
     });
   }
 
+  $('#tocSwitch').click(() => {
+    $('#navBar')
+  });
+
   $('#collapseToc').on('shown.bs.collapse', function() {
     // do something…
     // slimscroll
@@ -74,4 +78,34 @@ $(function() {
     }
     $menuList[activeIndex] && $($menuList[activeIndex]).addClass('active');
   }
+
+  let tocIndex = 0;
+
+  const pre = $('#toc-pre');
+  pre.click(() => {
+    tocIndex --;
+    if (tocIndex < 0) {
+      tocIndex = 0;
+    }
+    document.getElementById(tocList[tocIndex].slice(1)).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    history.pushState(null, null, tocList[tocIndex]);
+  });
+
+  const last = $('#toc-last');
+  last.click(() => {
+    tocIndex ++;
+    if (tocIndex > tocList.length - 1) {
+      tocIndex = tocList.length - 1;
+    }
+    document.getElementById(tocList[tocIndex].slice(1)).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    history.pushState(null, null, tocList[tocIndex]);
+  });
+
+  $('#toc-top').click(() => {
+    $('.main')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  $('#toc-bottom').click(() => {
+    $('#comments')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 });

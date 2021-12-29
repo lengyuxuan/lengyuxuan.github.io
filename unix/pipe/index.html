@@ -194,6 +194,25 @@
 </aside>
 
 
+<div class="toc-button">
+  <div id="toc-pre" name="pre" title="上一节"></div>
+  <div id="toc-top" name="top" title="返回顶部">顶部</div>
+  <div id="toc-bottom" name="bottom" title="滚至底部">底部</div>
+  <div id="toc-last" name="last" title="下一节"></div>
+</div>
+
+<script>
+  const content = `<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%A1%E9%81%93"><span class="toc-number">1.</span> <span class="toc-text">1. 管道</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-popen"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 popen</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-fifo"><span class="toc-number">2.</span> <span class="toc-text">2. FIFO</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#21-fifo-%E5%9C%A8%E6%9C%89%E8%A1%80%E7%BC%98%E5%85%B3%E7%B3%BB%E7%9A%84%E8%BF%9B%E7%A8%8B%E4%B8%8A%E4%BD%BF%E7%94%A8"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 FIFO 在有血缘关系的进程上使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-fifo-%E5%9C%A8%E6%97%A0%E8%A1%80%E7%BC%98%E5%85%B3%E7%B3%BB%E7%9A%84%E8%BF%9B%E7%A8%8B%E4%B8%8A%E4%BD%BF%E7%94%A8"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 FIFO 在无血缘关系的进程上使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%AE%A1%E9%81%93%E5%92%8C-fifo-%E7%9A%84%E9%A2%9D%E5%A4%96%E5%B1%9E%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">3. 管道和 FIFO 的额外属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fifo-%E4%B8%80%E5%AF%B9%E5%A4%9A%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">FIFO 一对多模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E5%9E%8B%E6%94%BB%E5%87%BB"><span class="toc-number">4.1.</span> <span class="toc-text">拒绝服务型攻击</span></a></li></ol></li></ol>`;
+  const reg = /href="(?<toc>.+?)"/g;
+  let res = null;
+  const tocList = [];
+  while ((res = reg.exec(content))) {
+    if (res.groups.toc) {
+      tocList.push(res.groups.toc);
+    }
+  }
+</script>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-unix/pipe" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -1463,7 +1482,7 @@ flags <span class="token operator">|=</span> O_NONBLOCK<span class="token punctu
   
 </div>
 
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <nav class="bar bar-footer clearfix" id="navBar" data-stick-bottom>
   <div class="bar-inner">
   
   <ul class="pager pull-left">
@@ -1479,7 +1498,7 @@ flags <span class="token operator">|=</span> O_NONBLOCK<span class="token punctu
     
     
     <li class="toggle-toc">
-      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+      <a class="toggle-btn collapsed" id="tocSwitch" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
         <span>[&nbsp;</span><span>文章目录</span>
         <i class="text-collapsed icon icon-anchor"></i>
         <i class="text-in icon icon-close"></i>
@@ -1498,6 +1517,7 @@ flags <span class="token operator">|=</span> O_NONBLOCK<span class="token punctu
   </div>
   </div>
 </nav>
+
   
 
 

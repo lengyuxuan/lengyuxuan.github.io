@@ -189,6 +189,25 @@
 </aside>
 
 
+<div class="toc-button">
+  <div id="toc-pre" name="pre" title="上一节"></div>
+  <div id="toc-top" name="top" title="返回顶部">顶部</div>
+  <div id="toc-bottom" name="bottom" title="滚至底部">底部</div>
+  <div id="toc-last" name="last" title="下一节"></div>
+</div>
+
+<script>
+  const content = `<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E4%B8%AD%E9%97%B4%E8%AE%BE%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">网络中间设备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%B1%82"><span class="toc-number">1.1.</span> <span class="toc-text">物理层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="toc-number">1.2.</span> <span class="toc-text">数据链路层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%8F%E6%98%8E%E7%BD%91%E6%A1%A5"><span class="toc-number">1.2.1.</span> <span class="toc-text">透明网桥</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BA%90%E8%B7%AF%E7%94%B1%E7%BD%91%E6%A1%A5"><span class="toc-number">1.2.2.</span> <span class="toc-text">源路由网桥</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E6%8E%A5%E5%8F%A3%E7%BD%91%E6%A1%A5%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-number">1.2.3.</span> <span class="toc-text">多接口网桥——以太网交换机</span></a></li></ol></li></ol></li></ol>`;
+  const reg = /href="(?<toc>.+?)"/g;
+  let res = null;
+  const tocList = [];
+  while ((res = reg.exec(content))) {
+    if (res.groups.toc) {
+      tocList.push(res.groups.toc);
+    }
+  }
+</script>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-osi/datalink" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -702,7 +721,7 @@ pre[data-line] {
   
 </div>
 
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <nav class="bar bar-footer clearfix" id="navBar" data-stick-bottom>
   <div class="bar-inner">
   
   <ul class="pager pull-left">
@@ -718,7 +737,7 @@ pre[data-line] {
     
     
     <li class="toggle-toc">
-      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+      <a class="toggle-btn collapsed" id="tocSwitch" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
         <span>[&nbsp;</span><span>文章目录</span>
         <i class="text-collapsed icon icon-anchor"></i>
         <i class="text-in icon icon-close"></i>
@@ -737,6 +756,7 @@ pre[data-line] {
   </div>
   </div>
 </nav>
+
   
 
 

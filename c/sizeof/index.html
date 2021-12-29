@@ -188,6 +188,25 @@
 </aside>
 
 
+<div class="toc-button">
+  <div id="toc-pre" name="pre" title="上一节"></div>
+  <div id="toc-top" name="top" title="返回顶部">顶部</div>
+  <div id="toc-bottom" name="bottom" title="滚至底部">底部</div>
+  <div id="toc-last" name="last" title="下一节"></div>
+</div>
+
+<script>
+  const content = `<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E6%99%AE%E9%80%9A%E5%8F%98%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">1. 普通变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-number">2.</span> <span class="toc-text">2. 结构体</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E6%95%B0%E7%BB%84"><span class="toc-number">3.</span> <span class="toc-text">3. 数组</span></a></li></ol>`;
+  const reg = /href="(?<toc>.+?)"/g;
+  let res = null;
+  const tocList = [];
+  while ((res = reg.exec(content))) {
+    if (res.groups.toc) {
+      tocList.push(res.groups.toc);
+    }
+  }
+</script>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-c/sizeof" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -665,7 +684,7 @@ p2 <span class="token operator">=</span> <span class="token punctuation">{</span
   
 </div>
 
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <nav class="bar bar-footer clearfix" id="navBar" data-stick-bottom>
   <div class="bar-inner">
   
   <ul class="pager pull-left">
@@ -681,7 +700,7 @@ p2 <span class="token operator">=</span> <span class="token punctuation">{</span
     
     
     <li class="toggle-toc">
-      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+      <a class="toggle-btn collapsed" id="tocSwitch" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
         <span>[&nbsp;</span><span>文章目录</span>
         <i class="text-collapsed icon icon-anchor"></i>
         <i class="text-in icon icon-close"></i>
@@ -700,6 +719,7 @@ p2 <span class="token operator">=</span> <span class="token punctuation">{</span
   </div>
   </div>
 </nav>
+
   
 
 

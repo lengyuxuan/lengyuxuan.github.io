@@ -188,6 +188,25 @@
 </aside>
 
 
+<div class="toc-button">
+  <div id="toc-pre" name="pre" title="上一节"></div>
+  <div id="toc-top" name="top" title="返回顶部">顶部</div>
+  <div id="toc-bottom" name="bottom" title="滚至底部">底部</div>
+  <div id="toc-last" name="last" title="下一节"></div>
+</div>
+
+<script>
+  const content = `<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%89%E6%A0%87%E7%A7%BB%E5%8A%A8"><span class="toc-number">1.</span> <span class="toc-text">光标移动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">插入模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E6%9C%AC"><span class="toc-number">3.</span> <span class="toc-text">删除文本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E8%B7%B3%E8%BD%AC"><span class="toc-number">4.</span> <span class="toc-text">快速跳转</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E8%B7%B3%E8%BD%AC"><span class="toc-number">5.</span> <span class="toc-text">行内跳转</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%AA%E5%88%87-%E5%A4%8D%E5%88%B6-%E7%B2%98%E8%B4%B4"><span class="toc-number">6.</span> <span class="toc-text">剪切、复制、粘贴</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9B%BF%E6%8D%A2%E5%8F%8A%E6%92%A4%E9%94%80"><span class="toc-number">7.</span> <span class="toc-text">字符的替换及撤销</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-number">8.</span> <span class="toc-text">查找</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E6%96%87%E4%BB%B6%E7%BC%96%E8%BE%91"><span class="toc-number">9.</span> <span class="toc-text">多文件编辑</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%81%A2%E5%A4%8D%E6%96%87%E4%BB%B6"><span class="toc-number">10.</span> <span class="toc-text">恢复文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A8%A1%E5%BC%8F"><span class="toc-number">11.</span> <span class="toc-text">可视化模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%86%E7%AA%97%E6%93%8D%E4%BD%9C"><span class="toc-number">12.</span> <span class="toc-text">视窗操作</span></a></li></ol>`;
+  const reg = /href="(?<toc>.+?)"/g;
+  let res = null;
+  const tocList = [];
+  while ((res = reg.exec(content))) {
+    if (res.groups.toc) {
+      tocList.push(res.groups.toc);
+    }
+  }
+</script>
+
 <main class="main" role="main">
   <div class="content">
   <article id="post-vim" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -641,7 +660,7 @@ ctrl+w +  &#x589E;&#x52A0;&#x89C6;&#x7A97;&#x7684;&#x9AD8;&#x5EA6;</p>
   
 </div>
 
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <nav class="bar bar-footer clearfix" id="navBar" data-stick-bottom>
   <div class="bar-inner">
   
   <ul class="pager pull-left">
@@ -657,7 +676,7 @@ ctrl+w +  &#x589E;&#x52A0;&#x89C6;&#x7A97;&#x7684;&#x9AD8;&#x5EA6;</p>
     
     
     <li class="toggle-toc">
-      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+      <a class="toggle-btn collapsed" id="tocSwitch" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
         <span>[&nbsp;</span><span>文章目录</span>
         <i class="text-collapsed icon icon-anchor"></i>
         <i class="text-in icon icon-close"></i>
@@ -676,6 +695,7 @@ ctrl+w +  &#x589E;&#x52A0;&#x89C6;&#x7A97;&#x7684;&#x9AD8;&#x5EA6;</p>
   </div>
   </div>
 </nav>
+
   
 
 
