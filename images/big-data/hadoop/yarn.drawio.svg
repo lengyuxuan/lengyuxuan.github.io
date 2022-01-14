@@ -47,14 +47,14 @@
                         <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
                             <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
                                 <span>
-                                    ResourceManger
+                                    ResourceManager
                                 </span>
                             </div>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="210" y="255" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    ResourceManger
+                    ResourceManager
                 </text>
             </switch>
         </g>
@@ -67,14 +67,14 @@
                         <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
                             <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
                                 <span>
-                                    NodeManger
+                                    NodeManager
                                 </span>
                             </div>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="482" y="54" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    NodeManger
+                    NodeManager
                 </text>
             </switch>
         </g>
@@ -121,14 +121,14 @@
                         <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
                             <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
                                 <span>
-                                    NodeManger
+                                    NodeManager
                                 </span>
                             </div>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="486" y="255" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    NodeManger
+                    NodeManager
                 </text>
             </switch>
         </g>
@@ -177,14 +177,14 @@
                         <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
                             <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
                                 <span>
-                                    NodeManger
+                                    NodeManager
                                 </span>
                             </div>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="480" y="454" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    NodeManger
+                    NodeManager
                 </text>
             </switch>
         </g>

@@ -9467,3 +9467,8 @@ body.okayNav-loaded {
   --width: 20px;
   --color: #b9b9b9;
 }
+
+.toc-select {
+  color: #42b983;
+  font-weight: 600;
+}

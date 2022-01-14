@@ -108,4 +108,23 @@ $(function() {
   $('#toc-bottom').click(() => {
     $('#comments')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
+
+  document.getElementById(location.hash.slice(1)).scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  new hScroll({
+    listen: '.mume-header', //监听的元素
+    callback: (index) => {
+      if (index === tocIndex) {
+        return;
+      }
+      history.pushState(null, null, tocList[index]);
+      tocIndex = index;
+      try {
+        $('#toc .toc-item a').removeClass('toc-select');
+        $('#toc .toc-item a').eq(index).addClass('toc-select');
+      } catch (error) {
+      }
+        
+    },
+  });
 });
