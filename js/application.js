@@ -113,10 +113,12 @@ $(function() {
     
   }
 
+  let first = true;
   new hScroll({
     listen: '.mume-header', //监听的元素
     callback: (index) => {
-      if (index === tocIndex) {
+      if (index === tocIndex && !first) {
+        first = false;
         return;
       }
       history.pushState(null, null, tocList[index]);
