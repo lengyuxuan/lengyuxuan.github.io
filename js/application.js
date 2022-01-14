@@ -88,7 +88,6 @@ $(function() {
       tocIndex = 0;
     }
     document.getElementById(tocList[tocIndex].slice(1)).scrollIntoView({ behavior: 'smooth', block: 'start' });
-    history.pushState(null, null, tocList[tocIndex]);
   });
 
   const last = $('#toc-last');
@@ -98,7 +97,6 @@ $(function() {
       tocIndex = tocList.length - 1;
     }
     document.getElementById(tocList[tocIndex].slice(1)).scrollIntoView({ behavior: 'smooth', block: 'start' });
-    history.pushState(null, null, tocList[tocIndex]);
   });
 
   $('#toc-top').click(() => {
@@ -124,7 +122,10 @@ $(function() {
         $('#toc .toc-item a').eq(index).addClass('toc-select');
       } catch (error) {
       }
-        
     },
   });
+
+  if ($(document.body).width() > 992) {
+    $('a#tocSwitch.toggle-btn.collapsed').click();
+  }
 });
