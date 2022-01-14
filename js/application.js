@@ -107,7 +107,11 @@ $(function() {
     $('#comments')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
-  document.getElementById(location.hash.slice(1)).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  try {
+    document.getElementById(location.hash.slice(1)).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } catch (error) {
+    
+  }
 
   new hScroll({
     listen: '.mume-header', //监听的元素
