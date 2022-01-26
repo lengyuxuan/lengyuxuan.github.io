@@ -281,7 +281,7 @@ a {
 
 a:hover,
 a:focus {
-  color: #0a6ebd;
+  color: #42b983;
   text-decoration: underline;
 }
 
@@ -3270,16 +3270,15 @@ a {
 
 a:focus,
 a:hover {
-  color: #0a6ebd;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 a.active {
-  color: #0a6ebd;
+  color: #42b983;
 }
 
 .active > a {
-  color: #0a6ebd;
+  color: #42b983;
 }
 
 input,
@@ -6502,8 +6501,7 @@ body.no-sidebar .sidebar {
 
 .marked-body a:focus,
 .marked-body a:hover {
-  color: #0a6ebd;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .marked-body ul,
