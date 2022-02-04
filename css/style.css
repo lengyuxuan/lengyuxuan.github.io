@@ -9470,3 +9470,10 @@ body.okayNav-loaded {
   color: #42b983;
   font-weight: 600;
 }
+
+@media screen and (max-width: 1450px) {
+  .toc-button {
+    right: 20px;
+    bottom: 55px;
+  }
+}
