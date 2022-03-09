@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.fangjin.life/images/osi/datalink-layer/crc.png">
 <meta property="article:published_time" content="2021-06-28T02:33:00.000Z">
-<meta property="article:modified_time" content="2022-03-08T11:35:19.273Z">
+<meta property="article:modified_time" content="2022-03-09T08:23:30.514Z">
 <meta property="article:author" content="fangjin">
 <meta property="article:tag" content="osi">
 <meta name="twitter:card" content="summary">
@@ -492,12 +492,14 @@ pre[data-line] {
     <h2 class="mume-header" id="%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A3%80%E9%AA%8C-crc"><a href="#%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A3%80%E9%AA%8C-crc">&#x5FAA;&#x73AF;&#x5197;&#x4F59;&#x68C0;&#x9A8C; CRC</a></h2>
 
 <p>&#x5728;&#x53D1;&#x9001;&#x7AEF;&#x5148;&#x628A;&#x6570;&#x636E;&#x5212;&#x5206;&#x4E3A;&#x7EC4;&#xFF0C;&#x5047;&#x8BBE;&#x6BCF;&#x7EC4; k &#x4E2A;&#x6BD4;&#x7279;&#x3002;&#x73B0;&#x5047;&#x5B9A;&#x5F85;&#x4F20;&#x9001;&#x7684;&#x6570;&#x636E;&#x4E3A; M&#x3002;CRC &#x8FD0;&#x7B97;&#x5C31;&#x662F;&#x5728;&#x6570;&#x636E; M &#x7684;&#x540E;&#x9762;&#x6DFB;&#x52A0;&#x4F9B;&#x5DEE;&#x9519;&#x68C0;&#x9A8C;&#x7528;&#x7684; n &#x4F4D;&#x5197;&#x4F59;&#x7801;&#xFF0C;&#x6784;&#x6210; (k + n) &#x4F4D;&#x7684;&#x4E00;&#x4E2A;&#x5E27;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#x3002;</p>
-<p>n &#x4F4D;&#x5197;&#x4F59;&#x7801;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#x5F97;&#x51FA;&#xFF1A;&#x7528;&#x4E8C;&#x8FDB;&#x5236;&#x7684;<strong>&#x6A21; 2 &#x8FD0;&#x7B97;</strong>&#x8FDB;&#x884C; 2<sup>n</sup> &#x4E58; M &#x7684;&#x8FD0;&#x7B97;&#xFF0C;&#x8FD9;&#x76F8;&#x5F53;&#x4E8E;&#x5728; M &#x540E;&#x6DFB;&#x52A0; n &#x4E2A; 0&#x3002;&#x5F97;&#x5230;&#x7684; (k + n) &#x4F4D;&#x7684;&#x6570;&#x9664;&#x4EE5;&#x6536;&#x53D1;&#x53CC;&#x65B9;&#x4E8B;&#x5148;&#x5546;&#x5B9A;&#x7684;&#x957F;&#x5EA6;&#x4E3A; (n + 1) &#x4F4D;&#x7684;&#x9664;&#x6570; P&#xFF0C;&#x5F97;&#x51FA;&#x5546;&#x662F; Q &#x800C;&#x4F59;&#x6570;&#x662F; R (n &#x4F4D;&#xFF0C;&#x6BD4; P &#x5C11;&#x4E00;&#x4F4D;)&#x3002;</p>
-<p>&#x5047;&#x5B9A; M = 101001 (k = 6)&#xFF0C;&#x9664;&#x6570; P = 1101 (n = 3)&#xFF0C;&#x9996;&#x5148;&#x5BF9;&#x88AB;&#x9664;&#x6570; M &#x8FDB;&#x884C;&#x79FB;&#x4F4D;&#x8FD0;&#x7B97;&#x5F97;&#x5230;&#x88AB;&#x9664;&#x6570; M&apos; = M * 2<sup>3</sup> = 101001000</p>
+<p>n &#x4F4D;&#x5197;&#x4F59;&#x7801;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#x5F97;&#x51FA;&#xFF1A;&#x7528;&#x4E8C;&#x8FDB;&#x5236;&#x7684;<strong>&#x6A21; 2 &#x8FD0;&#x7B97;</strong>&#x8FDB;&#x884C; 2<sup>n</sup> &#x4E58; M &#x7684;&#x8FD0;&#x7B97;&#xFF0C;&#x8FD9;&#x76F8;&#x5F53;&#x4E8E;&#x5728; M &#x540E;&#x6DFB;&#x52A0; n &#x4E2A; 0&#x3002;&#x5F97;&#x5230;&#x7684; (k + n) &#x4F4D;&#x7684;&#x6570;&#x9664;&#x4EE5;&#x6536;&#x53D1;&#x53CC;&#x65B9;&#x4E8B;&#x5148;&#x5546;&#x5B9A;&#x7684;&#x957F;&#x5EA6;&#x4E3A; (n + 1) &#x4F4D;&#x7684;&#x9664;&#x6570; P&#xFF0C;&#x5F97;&#x51FA;&#x5546;&#x662F; Q &#x800C;&#x4F59;&#x6570;&#x662F; R (n &#x4F4D;&#xFF0C;&#x6BD4; P &#x5C11;&#x4E00;&#x4F4D;)&#x3002;<br>
+re<br>
+&#x5047;&#x5B9A; M = 101001 (k = 6)&#xFF0C;&#x9664;&#x6570; P = 1101 (n = 3)&#xFF0C;&#x9996;&#x5148;&#x5BF9;&#x88AB;&#x9664;&#x6570; M &#x8FDB;&#x884C;&#x79FB;&#x4F4D;&#x8FD0;&#x7B97;&#x5F97;&#x5230;&#x88AB;&#x9664;&#x6570; M&apos; = M * 2<sup>3</sup> = 101001000</p>
 <blockquote>
 <p>*&#x6CE8;&#xFF1A;&#x6A21; 2 &#x9664;&#x6CD5;&#x65E2;&#x4E0D;&#x5411;&#x4E0A;&#x4F4D;&#x501F;&#x4F4D;&#xFF0C;&#x4E5F;&#x4E0D;&#x6BD4;&#x8F83;&#x9664;&#x6570;&#x548C;&#x88AB;&#x9664;&#x6570;&#x7684;&#x76F8;&#x540C;&#x4F4D;&#x6570;&#x503C;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x4F59;&#x6570;&#x9996;&#x4F4D;&#x662F; 1 &#x5C31;&#x5546; 1&#xFF0C;&#x662F; 0 &#x5C31;&#x5546; 0&#x3002;</p>
 </blockquote>
 <p><img src="/images/osi/datalink-layer/crc.png" alt></p>
+<p>&#x5F97;&#x5230;&#x4F59;&#x6570; R &#x4E3A; 001&#xFF0C;&#x62FC;&#x63A5;&#x5230;&#x5B9E;&#x9645;&#x53D1;&#x9001;&#x7684;&#x6570;&#x636E; M&apos;&apos; = 101001001&#xFF0C;&#x63A5;&#x6536;&#x7AEF;&#x63A5;&#x53D7;&#x5230; M&apos;&apos; &#x540E;&#x9664;&#x4EE5;&#x76F8;&#x540C;&#x7684;&#x9664;&#x6570; P&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x4F59;&#x6570;&#x5982;&#x679C;&#x4E3A; 0&#xFF0C;&#x5219;&#x8BF4;&#x660E;&#x6570;&#x636E;&#x65E0;&#x5DEE;&#x9519;&#x3002;</p>
 <h2 class="mume-header" id="%E7%BD%91%E7%BB%9C%E4%B8%AD%E9%97%B4%E8%AE%BE%E5%A4%87"><a href="#%E7%BD%91%E7%BB%9C%E4%B8%AD%E9%97%B4%E8%AE%BE%E5%A4%87">&#x7F51;&#x7EDC;&#x4E2D;&#x95F4;&#x8BBE;&#x5907;</a></h2>
 
 <p>&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5C42;&#x7684;&#x4E2D;&#x95F4;&#x8BBE;&#x5907;&#x662F;<code>&#x7F51;&#x6865;</code>&#xFF0C;&#x4E24;&#x4E2A;&#x4EE5;&#x592A;&#x7F51;&#x901A;&#x8FC7;&#x7F51;&#x6865;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x540E;&#xFF0C;&#x4F1A;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x8986;&#x76D6;&#x8303;&#x56F4;&#x66F4;&#x5927;&#x7684;&#x4EE5;&#x592A;&#x7F51;&#xFF0C;&#x800C;&#x539F;&#x6765;&#x7684;&#x6BCF;&#x4E2A;&#x4EE5;&#x592A;&#x7F51;&#x5C31;&#x53EF;&#x4EE5;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;<code>&#x7F51;&#x6BB5;</code>&#x3002;</p>
