@@ -26,7 +26,7 @@
 <meta property="og:description" content="&#x2F;* http:&#x2F;&#x2F;prismjs.com&#x2F;download.html?themes&#x3D;prism&amp;languages&#x3D;markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-23T09:35:00.000Z">
-<meta property="article:modified_time" content="2021-12-27T11:19:59.363Z">
+<meta property="article:modified_time" content="2022-03-10T11:42:46.442Z">
 <meta property="article:author" content="fangjin">
 <meta property="article:tag" content="osi">
 <meta name="twitter:card" content="summary">
@@ -183,7 +183,7 @@
   <div class="">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp-%E7%9A%84%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">TCP 的主要特点</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -197,7 +197,7 @@
 </div>
 
 <script>
-  const content = ``;
+  const content = `<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp-%E7%9A%84%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">TCP 的主要特点</span></a></li></ol>`;
   const reg = /href="(?<toc>.+?)"/g;
   let res = null;
   const tocList = [];
@@ -254,10 +254,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/osi/transport/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.4k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.7k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 20(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 22(分)</span>
 	
 
       </div>
@@ -487,7 +487,26 @@ pre[data-line] {
   </head>
   <body for="html-export">
     <div class="mume markdown-preview  " >
-    
+    <h3 class="mume-header" id="tcp-%E7%9A%84%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><a href="#tcp-%E7%9A%84%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9">TCP &#x7684;&#x4E3B;&#x8981;&#x7279;&#x70B9;</a></h3>
+
+<ol>
+<li>
+<p>TCP &#x662F;&#x9762;&#x5411;&#x8FDE;&#x63A5;&#x7684;&#x4F20;&#x8F93;&#x5C42;&#x534F;&#x8BAE;&#xFF0C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5728;&#x4F7F;&#x7528; TCP &#x534F;&#x8BAE;&#x4E4B;&#x524D;&#x5FC5;&#x987B;&#x5148;&#x5EFA;&#x7ACB; TCP &#x8FDE;&#x63A5;&#xFF0C;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x5FC5;&#x987B;&#x91CA;&#x653E;&#x5DF2;&#x5EFA;&#x7ACB;&#x7684;&#x8FDE;&#x63A5;&#x3002;</p>
+</li>
+<li>
+<p>TCP &#x8FDE;&#x63A5;&#x53EA;&#x80FD;&#x662F;&#x70B9;&#x5BF9;&#x70B9;&#x7684;&#x3002;</p>
+</li>
+<li>
+<p>TCP &#x63D0;&#x4F9B;&#x53EF;&#x9760;&#x4EA4;&#x4ED8;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x901A;&#x8FC7; TCP &#x8FDE;&#x63A5;&#x4F20;&#x9001;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x65E0;&#x5DEE;&#x9519;&#x3001;&#x4E0D;&#x4E22;&#x5931;&#x3001;&#x4E0D;&#x91CD;&#x590D;&#xFF0C;&#x5E76;&#x4E14;&#x6309;&#x5E8F;&#x5230;&#x8FBE;&#x3002;</p>
+</li>
+<li>
+<p>TCP &#x63D0;&#x4F9B;&#x5168;&#x53CC;&#x5DE5;&#x901A;&#x4FE1;&#xFF0C;&#x5141;&#x8BB8;&#x901A;&#x4FE1;&#x53CC;&#x65B9;&#x7684;&#x8FDB;&#x7A0B;&#x5728;&#x4EFB;&#x610F;&#x65F6;&#x95F4;&#x53D1;&#x9001;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A; TCP &#x8FDE;&#x63A5;&#x7684;&#x4E24;&#x7AEF;&#x5747;&#x8BBE;&#x6709;&#x53D1;&#x9001;&#x7F13;&#x5B58;&#x548C;&#x63A5;&#x53D7;&#x7F13;&#x5B58;&#xFF0C;&#x7528;&#x6765;&#x5B58;&#x653E;&#x4E34;&#x65F6;&#x901A;&#x4FE1;&#x6570;&#x636E;&#xFF0C;&#x5728;&#x53D1;&#x9001;&#x65F6;&#xFF0C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53EA;&#x9700;&#x8981;&#x628A;&#x5F85;&#x53D1;&#x9001;&#x7684;&#x6570;&#x636E;&#x653E;&#x5728;&#x53D1;&#x9001;&#x7F13;&#x5B58;&#x4E2D;&#x5C31;&#x53EF;&#x4EE5;&#x505A;&#x5176;&#x5B83;&#x7684;&#x4E8B;&#xFF0C;TCP &#x4F1A;&#x5728;&#x5408;&#x9002;&#x7684;&#x65F6;&#x5019;&#x628A;&#x6570;&#x636E;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#xFF0C;&#x63A5;&#x53D7;&#x6570;&#x636E;&#x65F6;&#xFF0C;TCP &#x4F1A;&#x628A;&#x6536;&#x5230;&#x7684;&#x6570;&#x636E;&#x653E;&#x5165;&#x7F13;&#x5B58;&#xFF0C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5728;&#x5408;&#x9002;&#x7684;&#x65F6;&#x95F4;&#x8BFB;&#x53D6;&#x7F13;&#x5B58;&#x5373;&#x53EF;&#x3002;</p>
+</li>
+<li>
+<p>&#x9762;&#x5411;&#x5B57;&#x8282;&#x6D41;&#xFF0C;TCP &#x53EA;&#x5C06;&#x4E0A;&#x5C42;&#x4EA4;&#x4ED8;&#x7684;&#x6570;&#x636E;&#x5F53;&#x505A;&#x8FDE;&#x7EED;&#x65E0;&#x7ED3;&#x6784;&#x7684;&#x5B57;&#x8282;&#x6D41;&#x5904;&#x7406;&#xFF0C;&#x5E76;&#x4E0D;&#x5BF9;&#x5173;&#x5FC3;&#x5176;&#x4E2D;&#x7684;&#x542B;&#x4E49;&#x3002;</p>
+</li>
+</ol>
+
     </div>
     
     
