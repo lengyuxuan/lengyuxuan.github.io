@@ -18,7 +18,7 @@
 			for(var i = 0; i < kdiv.length; i++) {
 				arr.push($(kdiv[i]).offset().top);
 			}
-			self.sctopFun(arr);
+			// self.sctopFun(arr);
 			// let timer = null;
 			$(document.body).scroll(function() {
 				// clearTimeout(timer);
