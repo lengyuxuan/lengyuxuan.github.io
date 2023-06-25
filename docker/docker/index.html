@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://blog.fangjin.life/images/docker/docker-images.drawio.svg">
 <meta property="og:image" content="http://blog.fangjin.life/images/docker/docker-images-layer.drawio.svg">
 <meta property="article:published_time" content="2023-06-25T07:54:00.000Z">
-<meta property="article:modified_time" content="2023-06-25T07:02:17.237Z">
+<meta property="article:modified_time" content="2023-06-25T10:41:00.109Z">
 <meta property="article:author" content="fangjin">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.fangjin.life/images/docker/vmware.drawio.svg">
@@ -557,7 +557,9 @@ lrwxrwxrwx 1 root root 0 uts -&gt; uts:[4026531838]
 <span class="token comment"># cfs_quota_us &#x8868;&#x793A; Cgroup &#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7684; cpu &#x7684;&#x5E26;&#x5BBD;&#xFF0C;&#x5355;&#x4F4D;&#x4E3A;&#x5FAE;&#x79D2;&#xFF0C;&#x6700;&#x5C0F;&#x4E3A; 1000 &#x3BC;s</span>
 <span class="token builtin class-name">echo</span> <span class="token number">3000</span> <span class="token operator">&gt;</span> cpu.cfs_quota_us
 
-<span class="token comment"># &#x4E0A;&#x9762;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x8868;&#x793A;&#x5728; cfs_period_us &#x5468;&#x671F;&#x5185;&#xFF0C;&#x53EA;&#x80FD;&#x4F7F;&#x7528;&#x6700;&#x591A; cfs_quota_us &#x7684; cpu &#x8D44;&#x6E90;&#x3002;&#x5E26;&#x5165;&#x53C2;&#x6570;&#x503C;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x6B64;&#x914D;&#x7F6E;&#x4F1A;&#x5C06; cpu &#x5360;&#x7528;&#x9650;&#x5236;&#x5230; 30%</span>
+<span class="token comment"># &#x4E0A;&#x9762;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x8868;&#x793A;&#x5728; cfs_period_us &#x5468;&#x671F;&#x5185;&#xFF0C;</span>
+<span class="token comment"># &#x53EA;&#x80FD;&#x4F7F;&#x7528;&#x6700;&#x591A; cfs_quota_us &#x7684; cpu &#x8D44;&#x6E90;&#x3002;&#x5E26;&#x5165;&#x53C2;&#x6570;&#x503C;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x6B64;&#x914D;</span>
+<span class="token comment"># &#x7F6E;&#x4F1A;&#x5C06; cpu &#x5360;&#x7528;&#x9650;&#x5236;&#x5230; 30%</span>
 
 <span class="token comment"># &#x5C06;&#x8981;&#x9650;&#x5236;&#x7684;&#x8FDB;&#x7A0B;&#x53F7;&#x5199;&#x5165;&#x89C4;&#x5219;</span>
 <span class="token builtin class-name">echo</span> <span class="token number">6862</span> <span class="token operator">&gt;</span> tasks
@@ -622,9 +624,7 @@ docker pull node:16
       <a name="undefined">code</a>
       <span>dockerfile</span>
     </div>
-    <pre data-role="codeBlock" data-info="dockerfile" class="language-dockerfile"><span class="token comment"># &#x793A;&#x4F8B;&#x4E3A;&#x524D;&#x7AEF;&#x9879;&#x76EE;</span>
-
-<span class="token comment"># &#x5B9A;&#x4E49;&#x8BE5;&#x9636;&#x6BB5;&#x522B;&#x540D;&#x4E3A; builder</span>
+    <pre data-role="codeBlock" data-info="dockerfile" class="language-dockerfile"><span class="token comment"># &#x5B9A;&#x4E49;&#x8BE5;&#x9636;&#x6BB5;&#x522B;&#x540D;&#x4E3A; builder</span>
 <span class="token instruction"><span class="token keyword keyword-FROM">FROM</span> node:16 <span class="token keyword keyword-as">as</span> builder</span>
 <span class="token instruction"><span class="token keyword keyword-WORKDIR">WORKDIR</span> /home/app</span>
 <span class="token instruction"><span class="token keyword keyword-RUN">RUN</span> npm i</span>
