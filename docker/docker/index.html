@@ -28,8 +28,10 @@
 <meta property="og:image" content="http://blog.fangjin.life/images/docker/vmware.drawio.svg">
 <meta property="og:image" content="http://blog.fangjin.life/images/docker/cgroup-cpu.png">
 <meta property="og:image" content="http://blog.fangjin.life/images/docker/cgroup-cpu-limit.png">
+<meta property="og:image" content="http://blog.fangjin.life/images/docker/docker-images.drawio.svg">
+<meta property="og:image" content="http://blog.fangjin.life/images/docker/docker-images-layer.drawio.svg">
 <meta property="article:published_time" content="2023-06-25T07:54:00.000Z">
-<meta property="article:modified_time" content="2023-06-25T02:48:38.654Z">
+<meta property="article:modified_time" content="2023-06-25T07:02:17.237Z">
 <meta property="article:author" content="fangjin">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.fangjin.life/images/docker/vmware.drawio.svg">
@@ -186,7 +188,7 @@
   <div class="">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-docker"><span class="toc-number">1.</span> <span class="toc-text">什么是 Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-%E4%B8%AD%E7%9A%84%E9%9A%94%E7%A6%BB"><span class="toc-number">2.</span> <span class="toc-text">Docker 中的隔离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">Docker 的使用</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-docker"><span class="toc-number">1.</span> <span class="toc-text">什么是 Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-%E4%B8%AD%E7%9A%84%E9%9A%94%E7%A6%BB"><span class="toc-number">2.</span> <span class="toc-text">Docker 中的隔离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">Docker 的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dockerfile-%E7%9A%84%E7%BC%96%E5%86%99"><span class="toc-number">3.1.</span> <span class="toc-text">Dockerfile 的编写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%9C%E5%83%8F%E7%9A%84%E7%BC%93%E5%AD%98%E4%B8%8E%E5%A4%8D%E7%94%A8"><span class="toc-number">3.2.</span> <span class="toc-text">镜像的缓存与复用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E9%98%B6%E6%AE%B5"><span class="toc-number">3.3.</span> <span class="toc-text">构建阶段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-compose"><span class="toc-number">4.</span> <span class="toc-text">Docker-compose</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -200,7 +202,7 @@
 </div>
 
 <script>
-  const content = `<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-docker"><span class="toc-number">1.</span> <span class="toc-text">什么是 Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-%E4%B8%AD%E7%9A%84%E9%9A%94%E7%A6%BB"><span class="toc-number">2.</span> <span class="toc-text">Docker 中的隔离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">Docker 的使用</span></a></li></ol>`;
+  const content = `<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-docker"><span class="toc-number">1.</span> <span class="toc-text">什么是 Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-%E4%B8%AD%E7%9A%84%E9%9A%94%E7%A6%BB"><span class="toc-number">2.</span> <span class="toc-text">Docker 中的隔离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">Docker 的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dockerfile-%E7%9A%84%E7%BC%96%E5%86%99"><span class="toc-number">3.1.</span> <span class="toc-text">Dockerfile 的编写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%9C%E5%83%8F%E7%9A%84%E7%BC%93%E5%AD%98%E4%B8%8E%E5%A4%8D%E7%94%A8"><span class="toc-number">3.2.</span> <span class="toc-text">镜像的缓存与复用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E9%98%B6%E6%AE%B5"><span class="toc-number">3.3.</span> <span class="toc-text">构建阶段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-compose"><span class="toc-number">4.</span> <span class="toc-text">Docker-compose</span></a></li></ol>`;
   const reg = /href="(?<toc>.+?)"/g;
   let res = null;
   const tocList = [];
@@ -252,10 +254,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/docker/docker/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.4k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.6k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 16(分)</span>
 	
 
 
@@ -488,7 +490,7 @@ pre[data-line] {
     <div class="mume markdown-preview  " >
     <h2 class="mume-header" id="%E4%BB%80%E4%B9%88%E6%98%AF-docker"><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-docker">&#x4EC0;&#x4E48;&#x662F; Docker</a></h2>
 
-<p>&#x5728;&#x4ECB;&#x7ECD; Docker &#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5148;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#x4EC0;&#x4E48;&#x662F;&#x5BB9;&#x5668;&#x6280;&#x672F;&#x3002;&#x8BD5;&#x60F3;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x573A;&#x666F;&#xFF0C;&#x4F60;&#x5F00;&#x53D1;&#x4E86;&#x4E00;&#x5957;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#xFF0C;&#x8FD9;&#x5957;&#x7CFB;&#x7EDF;&#x975E;&#x5E38;&#x590D;&#x6742;&#xFF0C;&#x800C;&#x4E14;&#x4F9D;&#x8D56;&#x9879;&#x4F17;&#x591A;&#xFF0C;&#x8FD9;&#x5C31;&#x5BFC;&#x81F4;&#x6BCF;&#x6B21;&#x90E8;&#x7F72;&#x90FD;&#x8981;&#x91CD;&#x65B0;&#x505A;&#x4E00;&#x5957;&#x8FD0;&#x884C;&#x73AF;&#x5883;&#x3002;&#x800C;&#x4E14;&#x7531;&#x4E8E;&#x7269;&#x7406;&#x673A;&#x7684;&#x4E0D;&#x540C;&#xFF0C;&#x90E8;&#x7F72;&#x5B8C;&#x6210;&#x540E;&#x8FD8;&#x8981;&#x82B1;&#x5927;&#x91CF;&#x65F6;&#x95F4;&#x9A8C;&#x8BC1;&#x73AF;&#x5883;&#x7684;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x8FD9;&#x5C31;&#x9020;&#x6210;&#x4E86;&#x5F88;&#x5927;&#x7684;&#x4EBA;&#x529B;&#x6D6A;&#x8D39;&#x3002;</p>
+<p>&#x5728;&#x4ECB;&#x7ECD; docker &#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5148;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#x4EC0;&#x4E48;&#x662F;&#x5BB9;&#x5668;&#x6280;&#x672F;&#x3002;&#x8BD5;&#x60F3;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x573A;&#x666F;&#xFF0C;&#x4F60;&#x5F00;&#x53D1;&#x4E86;&#x4E00;&#x5957;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#xFF0C;&#x8FD9;&#x5957;&#x7CFB;&#x7EDF;&#x975E;&#x5E38;&#x590D;&#x6742;&#xFF0C;&#x800C;&#x4E14;&#x4F9D;&#x8D56;&#x9879;&#x4F17;&#x591A;&#xFF0C;&#x8FD9;&#x5C31;&#x5BFC;&#x81F4;&#x6BCF;&#x6B21;&#x90E8;&#x7F72;&#x90FD;&#x8981;&#x91CD;&#x65B0;&#x505A;&#x4E00;&#x5957;&#x8FD0;&#x884C;&#x73AF;&#x5883;&#x3002;&#x800C;&#x4E14;&#x7531;&#x4E8E;&#x7269;&#x7406;&#x673A;&#x7684;&#x4E0D;&#x540C;&#xFF0C;&#x90E8;&#x7F72;&#x5B8C;&#x6210;&#x540E;&#x8FD8;&#x8981;&#x82B1;&#x5927;&#x91CF;&#x65F6;&#x95F4;&#x9A8C;&#x8BC1;&#x73AF;&#x5883;&#x7684;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x8FD9;&#x5C31;&#x9020;&#x6210;&#x4E86;&#x5F88;&#x5927;&#x7684;&#x4EBA;&#x529B;&#x6D6A;&#x8D39;&#x3002;</p>
 <p>&#x65E9;&#x671F;&#x4EBA;&#x4EEC;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x73AF;&#x5883;&#x4E0D;&#x4E00;&#x81F4;&#x95EE;&#x9898;&#xFF0C;&#x63D0;&#x51FA;&#x4E86;<strong>&#x865A;&#x62DF;&#x673A;</strong>&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x4F8B;&#x5982;&#x5927;&#x540D;&#x9F0E;&#x9F0E;&#x7684; VMWare&#x3002;&#x901A;&#x8FC7; VMWare &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E00;&#x53F0;&#x865A;&#x62DF;&#x673A;&#x5E76;&#x505A;&#x597D;&#x8FD0;&#x884C;&#x73AF;&#x5883;&#xFF0C;&#x7136;&#x540E;&#x6253;&#x5305;&#x6210;&#x4E00;&#x4E2A;&#x955C;&#x50CF;&#xFF0C;&#x901A;&#x8FC7;&#x8BE5;&#x955C;&#x50CF;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x968F;&#x65F6;&#x968F;&#x5730;&#x7684;&#x521B;&#x5EFA;&#x5206;&#x8EAB;&#x3002;&#x800C;&#x4E14;&#x5BF9;&#x4E8E;&#x955C;&#x50CF;&#x800C;&#x8A00;&#x5B83;&#x65E0;&#x9700;&#x5728;&#x610F;&#x786C;&#x4EF6;&#x67B6;&#x6784;&#x548C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5E26;&#x6765;&#x7684;&#x5DEE;&#x5F02;&#xFF0C;&#x5B9E;&#x73B0;&#x771F;&#x6B63;&#x7684;&#x8DE8;&#x5E73;&#x53F0;&#x90E8;&#x7F72;&#x3002;</p>
 <p><img src="/images/docker/vmware.drawio.svg" alt></p>
 <p>VMWare &#x7684;&#x7F3A;&#x70B9;&#x4E5F;&#x663E;&#x7136;&#x6613;&#x89C1;&#xFF0C;&#x7531;&#x4E8E;&#x5B83;&#x63D0;&#x4F9B;&#x7684;&#x662F;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7EA7;&#x522B;&#x7684;&#x865A;&#x62DF;&#xFF0C;&#x6BCF;&#x6B21;&#x91CD;&#x542F;&#x90FD;&#x8981;&#x8FD0;&#x884C;&#x5B8C;&#x6574;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#xFF0C;&#x8FD9;&#x4F1A;&#x8017;&#x8D39;&#x5F88;&#x957F;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x800C;&#x4E14;&#x6BCF;&#x53F0;&#x865A;&#x62DF;&#x673A;&#x5185;&#x90E8;&#x90FD;&#x8FD0;&#x884C;&#x7740;&#x5B8C;&#x6574;&#x7684;&#x7CFB;&#x7EDF;&#x5185;&#x6838;&#xFF0C;&#x8FD9;&#x5BF9;&#x786C;&#x4EF6;&#x8D44;&#x6E90;&#x4E5F;&#x662F;&#x5F88;&#x5927;&#x7684;&#x6D6A;&#x8D39;&#x3002;</p>
@@ -496,7 +498,7 @@ pre[data-line] {
 <blockquote>
 <p>*&#x6CE8;&#xFF1A;&#x8F7B;&#x91CF;&#x5F53;&#x7136;&#x662F;&#x6709;&#x4EE3;&#x4EF7;&#x7684;&#xFF0C;&#x6B63;&#x5982;&#x4E0A;&#x6587;&#x6240;&#x8BF4;&#x5BB9;&#x5668;&#x5185;&#x90E8;&#x6CA1;&#x6709;&#x72EC;&#x7ACB;&#x7684;&#x5185;&#x6838;&#x8FDB;&#x7A0B;&#xFF0C;&#x8FD9;&#x5C31;&#x5BFC;&#x81F4;&#x5BB9;&#x5668;&#x65E0;&#x6CD5;&#x8FDB;&#x884C;&#x8DE8;&#x5E73;&#x53F0;&#x90E8;&#x7F72;&#x3002;</p>
 </blockquote>
-<p>&#x56DE;&#x5230;&#x6700;&#x521D;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x5176;&#x5B9E;&#x53EF;&#x4EE5;&#x7B80;&#x5316;&#x4E3A;&#x4E24;&#x4E2A;&#x8BCD;&#xFF1A;<strong>&#x9694;&#x79BB;</strong>&#x548C;<strong>&#x53EF;&#x590D;&#x5236;</strong>&#x3002;Linux &#x5185;&#x6838;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x5217;&#x7684;&#x865A;&#x62DF;&#x5316;&#x6280;&#x672F;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x9700;&#x6C42;&#xFF0C;&#x800C; Docker &#x5219;&#x662F;&#x5C06;&#x8FD9;&#x4E9B;&#x6280;&#x672F;&#x6574;&#x5408;&#x9762;&#x5411;&#x666E;&#x901A;&#x7528;&#x6237;&#xFF0C;&#x4ECE;&#x800C;&#x6210;&#x4E3A;&#x5E7F;&#x53D7;&#x6B22;&#x8FCE;&#x7684;&#x5BB9;&#x5668;&#x5F15;&#x64CE;&#x3002;</p>
+<p>&#x56DE;&#x5230;&#x6700;&#x521D;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x5176;&#x5B9E;&#x53EF;&#x4EE5;&#x7B80;&#x5316;&#x4E3A;&#x4E24;&#x4E2A;&#x8BCD;&#xFF1A;<strong>&#x9694;&#x79BB;</strong>&#x548C;<strong>&#x53EF;&#x590D;&#x5236;</strong>&#x3002;Linux &#x5185;&#x6838;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x5217;&#x7684;&#x865A;&#x62DF;&#x5316;&#x6280;&#x672F;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x9700;&#x6C42;&#xFF0C;&#x800C; docker &#x5219;&#x662F;&#x5C06;&#x8FD9;&#x4E9B;&#x6280;&#x672F;&#x6574;&#x5408;&#x9762;&#x5411;&#x666E;&#x901A;&#x7528;&#x6237;&#xFF0C;&#x4ECE;&#x800C;&#x6210;&#x4E3A;&#x5E7F;&#x53D7;&#x6B22;&#x8FCE;&#x7684;&#x5BB9;&#x5668;&#x5F15;&#x64CE;&#x3002;</p>
 <h2 class="mume-header" id="docker-%E4%B8%AD%E7%9A%84%E9%9A%94%E7%A6%BB"><a href="#docker-%E4%B8%AD%E7%9A%84%E9%9A%94%E7%A6%BB">Docker &#x4E2D;&#x7684;&#x9694;&#x79BB;</a></h2>
 
 <p>&#x9694;&#x79BB;&#x6309;&#x5927;&#x7C7B;&#x53EF;&#x4EE5;&#x5212;&#x5206;&#x4E3A;&#x4E24;&#x7C7B;&#xFF1A;</p>
@@ -506,10 +508,10 @@ pre[data-line] {
 &#x8FDB;&#x7A0B;&#x9694;&#x79BB;&#x4E3B;&#x8981;&#x901A;&#x8FC7; NameSpace &#x6280;&#x672F;&#x5B9E;&#x73B0;&#xFF0C;NameSpace &#x662F; Linux &#x7CFB;&#x7EDF;&#x5185;&#x6838;&#x7528;&#x6765;&#x9694;&#x79BB;&#x5185;&#x6838;&#x8D44;&#x6E90;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x901A;&#x8FC7; NameSpace &#x53EF;&#x4EE5;&#x8BA9;&#x8FDB;&#x7A0B;&#x53EA;&#x80FD;&#x770B;&#x5230;&#x4E0E;&#x81EA;&#x5DF1;&#x76F8;&#x5173;&#x7684;&#x8D44;&#x6E90;&#x3002;NameSpace &#x5E38;&#x89C1;&#x7684;&#x6709; 6 &#x79CD;&#x7C7B;&#x578B;&#xFF0C;&#x5728; <code>/proc/$&#123;pid&#125;/ns</code> &#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x8FDB;&#x7A0B; NameSpace &#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
 
     <div class="code-title">
-      <a name="undefined">code</a>
+      <a name="&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x7684; namespace &#x914D;&#x7F6E;">&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x7684; namespace &#x914D;&#x7F6E;</a>
       <span>shell-session</span>
     </div>
-    <pre data-role="codeBlock" data-info="shell-session" class="language-shell-session"><span class="token shell-symbol">[root@ali ns]#</span> pwd
+    <pre data-role="codeBlock" data-info="shell-session {file=&apos;&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x7684; namespace &#x914D;&#x7F6E;&apos;}" class="language-shell-session"><span class="token shell-symbol">[root@ali ns]#</span> pwd
 /proc/27340/ns
 <span class="token shell-symbol">[root@ali ns]#</span> ll -h
 total 0
@@ -523,7 +525,7 @@ lrwxrwxrwx 1 root root 0 uts -&gt; uts:[4026531838]
 </pre><p><strong>ipc</strong> &#x9694;&#x79BB;&#x7684;&#x662F;&#x8FDB;&#x7A0B;&#x95F4;&#x7684;&#x901A;&#x4FE1;&#xFF0C;&#x4F8B;&#x5982;&#x5E38;&#x89C1;&#x7684;&#x4FE1;&#x53F7;&#x91CF;&#x3001;&#x6D88;&#x606F;&#x961F;&#x5217;&#x3001;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7B49;&#x3002;&#x8FD9;&#x4E00;&#x70B9;&#x5F88;&#x597D;&#x7684;&#x4FDD;&#x62A4;&#x4E86;&#x5BB9;&#x5668;&#x5185;&#x7684;&#x8FDB;&#x7A0B;&#x4E0D;&#x4F1A;&#x88AB;&#x5916;&#x754C;&#x5E72;&#x6270;&#x3002;</p>
 <p><strong>mnt</strong> &#x9694;&#x79BB;&#x662F;&#x6587;&#x4EF6;&#x6302;&#x8F7D;&#x70B9;&#x7684;&#x9694;&#x79BB;&#xFF0C;&#x8FD9;&#x4E00;&#x70B9;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x8FDB;&#x7A0B;&#x53EF;&#x4EE5;&#x62E5;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x89C6;&#x89D2;&#x3002;</p>
 <p><strong>net</strong> &#x5141;&#x8BB8;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x5728;&#x81EA;&#x5DF1;&#x7684; namespace &#x4E2D;&#x62E5;&#x6709;&#x72EC;&#x7ACB;&#x7684;&#x7F51;&#x7EDC;&#x63A5;&#x53E3;&#x3001;&#x8DEF;&#x7531;&#x548C;&#x9632;&#x706B;&#x5899;&#x89C4;&#x5219;&#xFF0C;&#x4ECE;&#x800C;&#x9694;&#x79BB;&#x8FDB;&#x7A0B;&#x4E0E;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x7F51;&#x7EDC;&#x6570;&#x636E;&#x6D41;&#x548C;&#x5B89;&#x5168;&#x6027;&#x3002;</p>
-<p><strong>pid</strong> &#x9694;&#x79BB;&#x662F;&#x5BF9;&#x8FDB;&#x7A0B; PID &#x4ECE; 0 &#x5F00;&#x59CB;&#x91CD;&#x65B0;&#x7F16;&#x53F7;&#x3002;</p>
+<p><strong>pid</strong> &#x9694;&#x79BB;&#x662F;&#x5BF9;&#x8FDB;&#x7A0B; PID &#x4ECE; 1 &#x5F00;&#x59CB;&#x91CD;&#x65B0;&#x7F16;&#x53F7;&#x3002;</p>
 <p><strong>user</strong> &#x9694;&#x79BB;&#x5141;&#x8BB8;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x5728;&#x81EA;&#x5DF1;&#x7684; namespace &#x4E2D;&#x62E5;&#x6709;&#x72EC;&#x7ACB;&#x7684;&#x7528;&#x6237;&#x548C;&#x7EC4; ID&#xFF0C;&#x4ECE;&#x800C;&#x9694;&#x79BB;&#x8FDB;&#x7A0B;&#x4E0E;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#xFF0C;&#x4FDD;&#x8BC1;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x53EF;&#x4EE5;&#x72EC;&#x7ACB;&#x8FD0;&#x884C;&#x3002;</p>
 <p><strong>uts</strong> &#x9694;&#x79BB;&#x7684;&#x662F;&#x4E3B;&#x673A;&#x540D;&#x7684;&#x57DF;&#x540D;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x4F7F;&#x5BB9;&#x5668;&#x5728;&#x7F51;&#x7EDC;&#x4E0A;&#x88AB;&#x89C6;&#x4E3A;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x8282;&#x70B9;&#x3002;</p>
 </li>
@@ -534,19 +536,19 @@ lrwxrwxrwx 1 root root 0 uts -&gt; uts:[4026531838]
 <p>&#x8D44;&#x6E90;&#x9694;&#x79BB;&#x4E3B;&#x8981;&#x901A;&#x8FC7; Cgroup &#x5B9E;&#x73B0;&#xFF0C;&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x5BF9;&#x8FDB;&#x7A0B; cpu&#x3001;&#x5185;&#x5B58;&#x7B49;&#x8D44;&#x6E90;&#x5360;&#x7528;&#x7684;&#x7CBE;&#x51C6;&#x63A7;&#x5236;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x9650;&#x5236; cpu &#x7684;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
 
     <div class="code-title">
-      <a name="undefined">code</a>
+      <a name="cpu &#x5BC6;&#x96C6;&#x64CD;&#x4F5C;">cpu &#x5BC6;&#x96C6;&#x64CD;&#x4F5C;</a>
       <span>shell</span>
     </div>
-    <pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment"># &#x751F;&#x6210;&#x968F;&#x673A;&#x6570;&#x7136;&#x540E;&#x538B;&#x7F29;&#x968F;&#x540E;&#x629B;&#x5F03;&#xFF0C;&#x6A21;&#x62DF; cpu &#x5BC6;&#x96C6;&#x64CD;&#x4F5C;</span>
+    <pre data-role="codeBlock" data-info="shell {file=&apos;cpu &#x5BC6;&#x96C6;&#x64CD;&#x4F5C;&apos;}" class="language-shell"><span class="token comment"># &#x751F;&#x6210;&#x968F;&#x673A;&#x6570;&#x7136;&#x540E;&#x538B;&#x7F29;&#x968F;&#x540E;&#x629B;&#x5F03;&#xFF0C;&#x6A21;&#x62DF; cpu &#x5BC6;&#x96C6;&#x64CD;&#x4F5C;</span>
 <span class="token function">cat</span> /dev/urandom <span class="token operator">|</span> <span class="token function">gzip</span> -9 <span class="token operator">&gt;</span> /dev/null
 </pre><p>&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x53D1;&#x73B0; pid &#x4E3A; <code>6862</code> &#x7684;&#x8FDB;&#x7A0B; cpu &#x5DF2;&#x7ECF;&#x8DD1;&#x6EE1;&#x5355;&#x6838;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x8981;&#x5BF9;&#x4ED6;&#x8FDB;&#x884C;&#x9650;&#x5236;&#x3002;</p>
 <p><img src="/images/docker/cgroup-cpu.png" alt></p>
 
     <div class="code-title">
-      <a name="undefined">code</a>
+      <a name="&#x9650;&#x5236; cpu">&#x9650;&#x5236; cpu</a>
       <span>shell</span>
     </div>
-    <pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment"># &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x9650;&#x5236;&#x89C4;&#x5219;</span>
+    <pre data-role="codeBlock" data-info="shell {file=&apos;&#x9650;&#x5236; cpu&apos;}" class="language-shell"><span class="token comment"># &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x9650;&#x5236;&#x89C4;&#x5219;</span>
 <span class="token function">mkdir</span> /sys/fs/cgroup/cpu/test-cgroup
 <span class="token builtin class-name">cd</span> /sys/fs/cgroup/cpu/test-cgroup
 
@@ -562,10 +564,137 @@ lrwxrwxrwx 1 root root 0 uts -&gt; uts:[4026531838]
 </pre><p><img src="/images/docker/cgroup-cpu-limit.png" alt></p>
 <p>&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x770B;&#x5230; cpu &#x5DF2;&#x7ECF;&#x88AB;&#x9650;&#x5236;&#x5230; 30% &#x4E86;&#x3002;</p>
 <blockquote>
-<p>&#x8FD9;&#x4E9B;&#x529F;&#x80FD;&#x90FD;&#x5DF2;&#x7ECF;&#x88AB;&#x96C6;&#x6210;&#x5230; docker &#x4E2D;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x4F7F;&#x7528;&#x3002;&#x4F46;&#x662F;&#x5982;&#x679C;&#x670D;&#x52A1;&#x5BF9;&#x8C61;&#x662F;&#x7269;&#x7406;&#x673A;&#xFF0C;&#x6211;&#x4EEC;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x67D0;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF08;&#x4F8B;&#x5982;&#x6784;&#x5EFA;&#x8FDB;&#x7A0B;&#xFF09;&#x5C06;&#x8D44;&#x6E90;&#x5403;&#x6EE1;&#xFF0C;&#x9020;&#x6210;&#x5176;&#x5B83;&#x670D;&#x52A1;&#x4E0D;&#x53EF;&#x7528;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5408;&#x7406;&#x7684;&#x4F7F;&#x7528;&#x8BE5;&#x673A;&#x5236;&#x3002;</p>
+<p>&#x8FD9;&#x4E9B;&#x529F;&#x80FD;&#x90FD;&#x5DF2;&#x7ECF;&#x88AB;&#x96C6;&#x6210;&#x5230; docker &#x4E2D;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x4F7F;&#x7528;&#x3002;&#x4F46;&#x662F;&#x5982;&#x679C;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x662F;&#x7269;&#x7406;&#x673A;&#xFF0C;&#x6211;&#x4EEC;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x67D0;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF08;&#x4F8B;&#x5982;&#x6784;&#x5EFA;&#x8FDB;&#x7A0B;&#xFF09;&#x5C06;&#x8D44;&#x6E90;&#x5403;&#x6EE1;&#xFF0C;&#x9020;&#x6210;&#x5176;&#x5B83;&#x670D;&#x52A1;&#x4E0D;&#x53EF;&#x7528;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5408;&#x7406;&#x7684;&#x4F7F;&#x7528;&#x8BE5;&#x673A;&#x5236;&#x3002;</p>
 </blockquote>
 <h2 class="mume-header" id="docker-%E7%9A%84%E4%BD%BF%E7%94%A8"><a href="#docker-%E7%9A%84%E4%BD%BF%E7%94%A8">Docker &#x7684;&#x4F7F;&#x7528;</a></h2>
 
+<p>&#x4E0A;&#x6587;&#x4ECB;&#x7ECD;&#x4E86; docker &#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x9694;&#x79BB;&#x7684;&#xFF0C;&#x672C;&#x8282;&#x4F1A;&#x4ECB;&#x7ECD; docker &#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;<strong>&#x53EF;&#x590D;&#x5236;</strong>&#x7684;&#x3002;&#x7C7B;&#x4F3C;&#x4E8E;&#x865A;&#x62DF;&#x673A;&#xFF0C;docker &#x4E5F;&#x6709;&#x955C;&#x50CF;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x901A;&#x8FC7;&#x955C;&#x50CF;&#x53EF;&#x4EE5;&#x590D;&#x5236;&#x51FA;&#x4E00;&#x6A21;&#x4E00;&#x6837;&#x7684;&#x5BB9;&#x5668;&#x3002;docker &#x7684;&#x955C;&#x50CF;&#x5305;&#x542B;&#x4E86;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x6240;&#x9700;&#x8981;&#x7684;&#x5404;&#x79CD;&#x8D44;&#x6E90;&#xFF08;&#x7A0B;&#x5E8F;&#x3001;&#x5E93;&#x3001;&#x914D;&#x7F6E;&#x7B49;&#xFF09;&#xFF0C;&#x8FD8;&#x5305;&#x542B;&#x4E86;&#x4E3A;&#x8FD0;&#x884C;&#x65F6;&#x51C6;&#x5907;&#x7684;&#x4E00;&#x4E9B;&#x53C2;&#x6570;&#xFF08;&#x4F8B;&#x5982;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x3001;&#x6302;&#x8F7D;&#x5377;&#x7B49;&#xFF09;&#x3002;</p>
+<h3 class="mume-header" id="dockerfile-%E7%9A%84%E7%BC%96%E5%86%99"><a href="#dockerfile-%E7%9A%84%E7%BC%96%E5%86%99">Dockerfile &#x7684;&#x7F16;&#x5199;</a></h3>
+
+<p>dockerfile &#x662F;&#x955C;&#x50CF;&#x7684;&#x6784;&#x5EFA;&#x6587;&#x4EF6;&#xFF0C;&#x6587;&#x4EF6;&#x4E2D;&#x6BCF;&#x4E00;&#x884C;&#x7684;&#x5F00;&#x5934;&#x90FD;&#x5BF9;&#x5E94;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+
+    <div class="code-title">
+      <a name="centos.dockerfile">centos.dockerfile</a>
+      <span>dockerfile</span>
+    </div>
+    <pre data-role="codeBlock" data-info="dockerfile {file=&apos;centos.dockerfile&apos;}" class="language-dockerfile"><span class="token instruction"><span class="token keyword keyword-FROM">FROM</span> centos:7</span>
+
+<span class="token comment"># &#x6362;&#x6210;&#x56FD;&#x5185;&#x6E90;</span>
+<span class="token instruction"><span class="token keyword keyword-RUN">RUN</span> curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo</span>
+<span class="token instruction"><span class="token keyword keyword-RUN">RUN</span> curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo</span>
+
+<span class="token comment"># &#x89E3;&#x51B3;&#x9ED8;&#x8BA4;&#x7F16;&#x7801;&#x95EE;&#x9898;</span>
+<span class="token instruction"><span class="token keyword keyword-RUN">RUN</span> localedef -c -f UTF-8 -i zh_CN zh_CN.utf8</span>
+
+<span class="token comment"># &#x89E3;&#x51B3;&#x65F6;&#x533A;&#x95EE;&#x9898;</span>
+<span class="token instruction"><span class="token keyword keyword-ENV">ENV</span> LC_ALL zh_CN.UTF-8</span>
+<span class="token instruction"><span class="token keyword keyword-RUN">RUN</span> cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span>
+
+<span class="token instruction"><span class="token keyword keyword-CMD">CMD</span> /usr/sbin/sshd -D</span>
+
+<span class="token comment"># docker build -f centos.dockerfile -t harbor.jbr365.com/app/centos:7 .</span>
+</pre><p>Docker &#x7684;&#x955C;&#x50CF;&#x662F;&#x5206;&#x5C42;&#x5B58;&#x50A8;&#x7684;&#xFF0C;dockerfile &#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x5BF9;&#x5E94;&#x955C;&#x50CF;&#x7684;&#x4E00;&#x4E2A;&#x5C42;&#x7EA7;&#x3002;&#x6BCF;&#x4E2A;&#x5C42;&#x7EA7;&#x90FD;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A; hash &#x503C;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E; git &#x4E2D;&#x7684; commitId&#xFF0C;&#x6BCF;&#x5F53;&#x8FD9;&#x4E00;&#x6307;&#x4EE4;&#x540E;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#xFF0C;&#x90FD;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684; hash&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x8FD9;&#x79CD;&#x5C42;&#x7EA7;&#x6982;&#x5FF5;&#x7684;&#x5B58;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x6784;&#x5EFA;&#x955C;&#x50CF;&#x7684;&#x65F6;&#x5019;&#x624D;&#x4E0D;&#x7528;&#x6BCF;&#x6B21;&#x90FD;&#x7B49;&#x5F85;&#x5F88;&#x957F;&#x7684;&#x65F6;&#x95F4;&#x3002;</p>
+<h3 class="mume-header" id="%E9%95%9C%E5%83%8F%E7%9A%84%E7%BC%93%E5%AD%98%E4%B8%8E%E5%A4%8D%E7%94%A8"><a href="#%E9%95%9C%E5%83%8F%E7%9A%84%E7%BC%93%E5%AD%98%E4%B8%8E%E5%A4%8D%E7%94%A8">&#x955C;&#x50CF;&#x7684;&#x7F13;&#x5B58;&#x4E0E;&#x590D;&#x7528;</a></h3>
+
+<p>&#x6BCF;&#x4E2A;&#x955C;&#x50CF;&#x7684;&#x7B2C;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x90FD;&#x662F; <code>FROM</code>&#xFF0C;&#x5B83;&#x58F0;&#x660E;&#x4E86;&#x955C;&#x50CF;&#x7684;&#x7EE7;&#x627F;&#x5173;&#x7CFB;&#xFF0C;&#x4F8B;&#x5982;&#x4E0B;&#x56FE;&#x4E2D;&#x7684; node:14 &#x548C; node:16 &#x5C31;&#x62E5;&#x6709;&#x76F8;&#x540C;&#x7684;&#x7956;&#x5148;&#xFF1A;</p>
+<p><img src="/images/docker/docker-images.drawio.svg" alt></p>
+
+    <div class="code-title">
+      <a name="undefined">code</a>
+      <span>shell</span>
+    </div>
+    <pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment"># &#x8BE5;&#x547D;&#x4EE4;&#x4F1A;&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x62C9;&#x53D6; node:14 &#x7684;&#x955C;&#x50CF;</span>
+<span class="token comment"># &#x5B83;&#x4F1A;&#x4F9D;&#x6B21;&#x62C9;&#x53D6; Root&#x3001;centos:7&#x3001;lcy/centos:7 &#x6700;&#x540E;&#x62C9;&#x53D6; node:14</span>
+docker pull node:14
+
+<span class="token comment"># docker &#x68C0;&#x6D4B;&#x5230; node:16 &#x7684;&#x7956;&#x5148;&#x5DF2;&#x7ECF;&#x5728; node:14 &#x4E2D;&#x5B58;&#x5728;&#x4E86;</span>
+<span class="token comment"># &#x90A3;&#x4E48;&#x4F1A;&#x76F4;&#x63A5;&#x590D;&#x7528;&#xFF0C;&#x53EA;&#x62C9;&#x53D6; node:16 &#x7684;&#x955C;&#x50CF;&#x5C42;</span>
+docker pull node:16
+</pre><p>&#x8FD9;&#x6837;&#x7684;&#x590D;&#x7528;&#x673A;&#x5236;&#x53EF;&#x4EE5;&#x5927;&#x5927;&#x964D;&#x4F4E; pull/push &#x65F6;&#x7684;&#x7F51;&#x7EDC;&#x5360;&#x7528;&#xFF0C;&#x4EE5;&#x53CA;&#x78C1;&#x76D8;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x3002;</p>
+<p>&#x6B63;&#x5982;&#x4E0A;&#x4E00;&#x8282;&#x6240;&#x8BF4;&#xFF0C;&#x6BCF;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x90FD;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x955C;&#x50CF;&#x5C42;&#x3002;&#x8FD9;&#x4E9B;&#x955C;&#x50CF;&#x5C42;&#x4F1A;&#x5728;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x4E2D;&#x88AB;&#x7F13;&#x5B58;&#x548C;&#x590D;&#x7528;&#xFF1A;</p>
+<p><img src="/images/docker/docker-images-layer.drawio.svg" alt></p>
+<p>&#x4F8B;&#x5982;&#x6211;&#x4FEE;&#x6539;&#x7B2C; 5 &#x6761;&#x6307;&#x4EE4;&#x5185;&#x5BB9;&#xFF0C;&#x90A3;&#x4E48; 1-4 &#x5C42;&#x7684;&#x5185;&#x5BB9;&#x90FD;&#x5C06;&#x4F7F;&#x7528;&#x7F13;&#x5B58;&#xFF0C;5-6 &#x91CD;&#x65B0;&#x6267;&#x884C;&#x6784;&#x5EFA;&#x3002;</p>
+<h3 class="mume-header" id="%E6%9E%84%E5%BB%BA%E9%98%B6%E6%AE%B5"><a href="#%E6%9E%84%E5%BB%BA%E9%98%B6%E6%AE%B5">&#x6784;&#x5EFA;&#x9636;&#x6BB5;</a></h3>
+
+<p>&#x5047;&#x5982;&#x4F60;&#x7684;&#x7A0B;&#x5E8F;&#x6709;&#x6253;&#x5305;&#xFF08;&#x4F8B;&#x5982; webpack&#xFF09;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x6253;&#x5305;&#x9636;&#x6BB5;&#x5F80;&#x5F80;&#x9700;&#x8981;&#x5B8C;&#x6574;&#x7684;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#xFF0C;&#x800C;&#x8FD0;&#x884C;&#x65F6;&#x5219;&#x6CA1;&#x6709;&#x90A3;&#x4E48;&#x591A;&#x7684;&#x4F9D;&#x8D56;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x4E3A;&#x4E86;&#x964D;&#x4F4E;&#x955C;&#x50CF;&#x4F53;&#x79EF;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5C06;&#x955C;&#x50CF;&#x751F;&#x6210;&#x5206;&#x4E3A;&#x4E24;&#x4E2A;&#x9636;&#x6BB5;&#xFF1A;&#x6253;&#x5305; + &#x8FD0;&#x884C;&#x3002;</p>
+
+    <div class="code-title">
+      <a name="undefined">code</a>
+      <span>dockerfile</span>
+    </div>
+    <pre data-role="codeBlock" data-info="dockerfile" class="language-dockerfile"><span class="token comment"># &#x793A;&#x4F8B;&#x4E3A;&#x524D;&#x7AEF;&#x9879;&#x76EE;</span>
+
+<span class="token comment"># &#x5B9A;&#x4E49;&#x8BE5;&#x9636;&#x6BB5;&#x522B;&#x540D;&#x4E3A; builder</span>
+<span class="token instruction"><span class="token keyword keyword-FROM">FROM</span> node:16 <span class="token keyword keyword-as">as</span> builder</span>
+<span class="token instruction"><span class="token keyword keyword-WORKDIR">WORKDIR</span> /home/app</span>
+<span class="token instruction"><span class="token keyword keyword-RUN">RUN</span> npm i</span>
+<span class="token instruction"><span class="token keyword keyword-RUN">RUN</span> npm run build</span>
+
+<span class="token comment"># nginx &#x4EE3;&#x7406;</span>
+<span class="token instruction"><span class="token keyword keyword-FROM">FROM</span> nginx:1.21.0</span>
+<span class="token instruction"><span class="token keyword keyword-WORKDIR">WORKDIR</span> /server</span>
+<span class="token comment"># &#x5C06;&#x4E0A;&#x4E00;&#x9636;&#x6BB5;&#x7684;&#x4EA7;&#x7269;&#x590D;&#x5236;&#x8FC7;&#x6765;</span>
+<span class="token instruction"><span class="token keyword keyword-COPY">COPY</span> <span class="token options"><span class="token property">--from</span><span class="token punctuation">=</span><span class="token string">builder</span></span> /home/app/dist ./</span>
+<span class="token instruction"><span class="token keyword keyword-CMD">CMD</span> nginx</span>
+</pre><p>&#x8FD9;&#x6837;&#xFF0C;&#x6700;&#x7EC8;&#x7684;&#x4EA7;&#x7269;&#x7684;&#x955C;&#x50CF;&#x5C31;&#x53EA;&#x5305;&#x542B;&#x6784;&#x5EFA;&#x4EA7;&#x7269;&#x4E86;&#x3002;</p>
+<h2 class="mume-header" id="docker-compose"><a href="#docker-compose">Docker-compose</a></h2>
+
+<p>&#x901A;&#x8FC7;&#x4E00;&#x4E2A; dockerfile &#x6587;&#x4EF6;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F88;&#x5FEB;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#xFF0C;&#x4F46;&#x73B0;&#x5B9E;&#x5F80;&#x5F80;&#x662F;&#x591A;&#x4E2A;&#x5BB9;&#x5668;&#x76F8;&#x4E92;&#x914D;&#x5408;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x4F8B;&#x5982; server &#x670D;&#x52A1;&#x4F9D;&#x8D56; redis &#x548C; postgress&#x3002;&#x5982;&#x679C;&#x624B;&#x52A8;&#x542F;&#x52A8;&#x8FD9;&#x4E9B;&#x5BB9;&#x5668;&#x4E0D;&#x4EC5;&#x5F88;&#x9EBB;&#x70E6;&#xFF0C;&#x8FD8;&#x8981;&#x624B;&#x52A8;&#x89E3;&#x51B3;&#x670D;&#x52A1;&#x95F4;&#x4F9D;&#x8D56;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x60F3;&#x5728; server &#x4E2D;&#x8BBF;&#x95EE; redis&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x8981;&#x901A;&#x8FC7;&#x53C2;&#x6570;&#x7ED9; server &#x4F20;&#x9012; redis &#x7684; ip&#xFF0C;&#x4F46;&#x5982;&#x679C; redis &#x5BB9;&#x5668;&#x5220;&#x9664;&#x91CD;&#x542F;&#x4E86;&#xFF0C;ip &#x53D1;&#x751F;&#x4E86;&#x53D8;&#x5316;&#x6240;&#x6709;&#x7684;&#x4E1C;&#x897F;&#x53C8;&#x90FD;&#x8981;&#x91CD;&#x65B0;&#x914D;&#x7F6E;&#x4E00;&#x904D;&#x3002;&#x540C;&#x65F6;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x8FD8;&#x9700;&#x8981;&#x5728;&#x4E00;&#x53F0;&#x673A;&#x5668;&#x4E0A;&#x90E8;&#x7F72;&#x591A;&#x4E2A;&#x73AF;&#x5883;&#xFF08;&#x5F00;&#x53D1;&#x3001;&#x6D4B;&#x8BD5;&#x3001;&#x9884;&#x751F;&#x4EA7;&#x7B49;&#xFF09;&#xFF0C;&#x65E0;&#x7591;&#x53C8;&#x589E;&#x52A0;&#x4E86;&#x5F88;&#x591A;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x800C;&#x4E14;&#x8FD8;&#x589E;&#x52A0;&#x7684;&#x51FA;&#x9519;&#x7684;&#x6982;&#x7387;&#x3002;</p>
+<p>Docker-compose &#x6B63;&#x597D;&#x89E3;&#x51B3;&#x4E86;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5B83;&#x901A;&#x8FC7;&#x4E00;&#x4E2A; yml &#x6587;&#x4EF6;&#x5BF9;&#x5BB9;&#x5668;&#x8FDB;&#x884C;&#x7F16;&#x6392;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x7528;&#x7B80;&#x5355;&#x7684;&#x53C2;&#x6570;&#x5B9A;&#x4E49;&#x597D;&#x6574;&#x4E2A;&#x5DE5;&#x7A0B;&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x4EA4;&#x7ED9; compose &#x5C31;&#x597D;&#xFF01;</p>
+
+    <div class="code-title">
+      <a name="undefined">code</a>
+      <span>yml</span>
+    </div>
+    <pre data-role="codeBlock" data-info="yml" class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">&quot;3&quot;</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">assist-server</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> harbor.jbr365.com/app/assist<span class="token punctuation">-</span>server<span class="token punctuation">:</span>master
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> assist<span class="token punctuation">-</span>server
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token comment"># &#x8FD9;&#x91CC;&#x4F7F;&#x7528; EGG_SERVER_ENV &#x4F20;&#x53C2;&#x51B3;&#x5B9A;&#x670D;&#x52A1;&#x7684;&#x73AF;&#x5883;</span>
+      <span class="token key atrule">EGG_SERVER_ENV</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>EGG_SERVER_ENV<span class="token punctuation">}</span>
+      <span class="token comment"># &#x5BB9;&#x5668;&#x4F9D;&#x8D56;&#x65E0;&#x9700;&#x586B;&#x5199; ip&#xFF0C;&#x4F7F;&#x7528;&#x5BB9;&#x5668;&#x540D;&#x5373;&#x53EF;&#x8BBF;&#x95EE;&#xFF08;docker-compose &#x4F1A;&#x81EA;&#x52A8;&#x5EFA;&#x7ACB; hosts&#xFF09;</span>
+      <span class="token key atrule">POSTGRES</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span><span class="token number">5432</span>
+      <span class="token key atrule">REDIS</span><span class="token punctuation">:</span> redis<span class="token punctuation">:</span><span class="token number">6379</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> $<span class="token punctuation">{</span>SERVER_PORT<span class="token punctuation">}</span><span class="token punctuation">:</span><span class="token number">7001</span>
+
+  <span class="token key atrule">postgres</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span>latest
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> postgress<span class="token punctuation">:</span>/var/lib/postgresql/data
+
+  <span class="token key atrule">redis</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> redis<span class="token punctuation">:</span><span class="token number">5.1</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> redis
+
+<span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+  <span class="token key atrule">postgress</span><span class="token punctuation">:</span>
+</pre><p>&#x5B9A;&#x4E49;&#x597D;&#x670D;&#x52A1;&#x914D;&#x7F6E;&#x540E;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x73AF;&#x5883;&#xFF1A;</p>
+
+    <div class="code-title">
+      <a name="undefined">code</a>
+      <span>shell</span>
+    </div>
+    <pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">mkdir</span> dev
+<span class="token builtin class-name">cd</span> dev
+<span class="token builtin class-name">echo</span> -e <span class="token string">&quot;EGG_SERVER_ENV=dev<span class="token entity" title="\n">\n</span>SERVER_PORT=7001&quot;</span> <span class="token operator">&gt;</span> .env
+docker-compoe up -d
+</pre><p>&#x518D;&#x542F;&#x52A8;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x73AF;&#x5883;</p>
+
+    <div class="code-title">
+      <a name="undefined">code</a>
+      <span>shell</span>
+    </div>
+    <pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">mkdir</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">cd</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> -e <span class="token string">&quot;EGG_SERVER_ENV=test<span class="token entity" title="\n">\n</span>SERVER_PORT=7002&quot;</span> <span class="token operator">&gt;</span> .env
+docker-compoe up -d
+</pre><p>&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x7B80;&#x5355;&#x3002;</p>
 
     </div>
     
