@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://blog.fangjin.life/util/c-comand/</loc>
+    <loc>http://blog.fangjin.life/osi/transport/</loc>
     <lastmod>2023-08-18</lastmod>
   </url>
   <url>
     <loc>http://blog.fangjin.life/unix/posix-queue/</loc>
+    <lastmod>2023-08-18</lastmod>
+  </url>
+  <url>
+    <loc>http://blog.fangjin.life/osi/datalink/</loc>
+    <lastmod>2023-08-18</lastmod>
+  </url>
+  <url>
+    <loc>http://blog.fangjin.life/util/c-comand/</loc>
     <lastmod>2023-08-18</lastmod>
   </url>
   <url>
@@ -17,15 +25,7 @@
     <lastmod>2023-08-18</lastmod>
   </url>
   <url>
-    <loc>http://blog.fangjin.life/osi/transport/</loc>
-    <lastmod>2023-08-18</lastmod>
-  </url>
-  <url>
     <loc>http://blog.fangjin.life/osi/https/</loc>
-    <lastmod>2023-08-18</lastmod>
-  </url>
-  <url>
-    <loc>http://blog.fangjin.life/osi/datalink/</loc>
     <lastmod>2023-08-18</lastmod>
   </url>
   <url>

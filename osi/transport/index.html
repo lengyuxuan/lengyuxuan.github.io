@@ -41,7 +41,7 @@
 <meta property="og:image" content="http://blog.fangjin.life/images/osi/transport-layer/tcp-disconnection.drawio.svg">
 <meta property="og:image" content="http://blog.fangjin.life/images/osi/transport-layer/tcp-status.drawio.svg">
 <meta property="article:published_time" content="2021-11-23T09:35:00.000Z">
-<meta property="article:modified_time" content="2023-08-18T02:36:26.708Z">
+<meta property="article:modified_time" content="2023-08-18T03:18:10.018Z">
 <meta property="article:author" content="fangjin">
 <meta property="article:tag" content="osi">
 <meta name="twitter:card" content="summary">
@@ -697,7 +697,7 @@ pre[data-line] {
 
 <p>&#x91CA;&#x653E;&#x8FDE;&#x63A5;&#x7684;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
 <p><img src="/images/osi/transport-layer/tcp-disconnection.drawio.svg" alt></p>
-<p>&#x91CD;&#x70B9;&#x6CE8;&#x610F;&#xFF0C;Client &#x7AEF;&#x8FDB;&#x5165; CLOSED &#x72B6;&#x6001;&#x8981;&#x7B49;&#x5F85; <code>2 * MSL</code> &#x7684;&#x65F6;&#x95F4;&#xFF0C;MSL &#x6210;&#x4E3A;&#x6700;&#x957F;&#x62A5;&#x6587;&#x6BB5;&#x5BFF;&#x547D;&#xFF0C;&#x901A;&#x5E38;&#x5EFA;&#x8BAE; MSL &#x4E3A; 2 &#x5206;&#x949F;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4; Client &#x7AEF;&#x53D1;&#x9001;&#x5B8C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x62A5;&#x6587;&#x540E;&#xFF0C;&#x8981;&#x7B49;&#x5F85; 4 &#x5206;&#x949F;&#x540E;&#x624D;&#x4F1A;&#x8FDB;&#x5165; CLOSED &#x72B6;&#x6001;&#x3002;&#x539F;&#x56E0;&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;</p>
+<p>&#x91CD;&#x70B9;&#x6CE8;&#x610F;&#xFF0C;Client &#x7AEF;&#x8FDB;&#x5165; CLOSED &#x72B6;&#x6001;&#x8981;&#x7B49;&#x5F85; <code>2 * MSL</code> &#x7684;&#x65F6;&#x95F4;&#xFF0C;MSL &#x79F0;&#x4E3A;&#x6700;&#x957F;&#x62A5;&#x6587;&#x6BB5;&#x5BFF;&#x547D;&#xFF0C;&#x901A;&#x5E38;&#x5EFA;&#x8BAE; MSL &#x4E3A; 2 &#x5206;&#x949F;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4; Client &#x7AEF;&#x53D1;&#x9001;&#x5B8C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x62A5;&#x6587;&#x540E;&#xFF0C;&#x8981;&#x7B49;&#x5F85; 4 &#x5206;&#x949F;&#x540E;&#x624D;&#x4F1A;&#x8FDB;&#x5165; CLOSED &#x72B6;&#x6001;&#x3002;&#x539F;&#x56E0;&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;</p>
 <ol>
 <li>
 <p>&#x4FDD;&#x8BC1; Client &#x53D1;&#x9001;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A; ACK &#x62A5;&#x6587;&#x53EF;&#x4EE5;&#x5230;&#x8FBE; Server &#x7AEF;&#x3002;&#x56E0;&#x4E3A;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x62A5;&#x6587;&#x53EF;&#x80FD;&#x4F1A;&#x4E22;&#x5931;&#xFF0C;Server &#x7AEF;&#x5728;&#x7EA6;&#x5B9A;&#x65F6;&#x95F4;&#x5185;&#x6CA1;&#x6709;&#x6536;&#x5230; ACK&#xFF0C;&#x4F1A;&#x91CD;&#x65B0;&#x53D1;&#x9001; FIN + ACK &#x62A5;&#x6587;&#xFF0C;&#x540C;&#x65F6; Client &#x7AEF;&#x91CD;&#x65B0;&#x542F;&#x52A8; 2MSL &#x5B9A;&#x65F6;&#x5668;&#x3002;&#x5982;&#x679C; Client &#x6CA1;&#x6709; TIME_WAIT &#x76F4;&#x63A5; CLOSED &#x4E86;&#xFF0C;&#x90A3;&#x5C31;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x56DE;&#x590D; ACK&#xFF0C;Server &#x7AEF;&#x7684;&#x8FDE;&#x63A5;&#x4E5F;&#x5C31;&#x6C38;&#x8FDC;&#x65E0;&#x6CD5;&#x91CA;&#x653E;&#x3002;</p>
